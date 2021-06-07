@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# ELECTRONIC STORE (CROMA clone)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## PROJECT INTRODUCTION
 
-## Available Scripts
+E-commerce is fast gaining ground as an accepted and used business paradigm. More and more business houses are implementing web sites providing functionality for performing commercial transactions over the web. It is reasonable to say that the process of shopping on the web is becoming a common place.
 
-In the project directory, you can run:
+The objective of this project is to develop a general purpose ecommerce store where any kind of product can be bought from the comfort of home through the Internet. However, for implementation purposes, this project will deal with an online shopping for electronic product
 
-### `yarn start`
+Reference : https://www.croma.com/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## FEATURES
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+• Login Registration System
+• Login with email/password and social login (Google / Facebook)
+• Admin dashboard for order management system
+• User dashboard for Purchase History
+• Products CRUD with advance features including categories, sub-categories, multiple image uploads etc
+• Advance searching and filtering options
+• Pagination and Carousel
+• Star rating system
+• Material UI / Ant Design for Styling
+• Cart functionality with both backend/frontend implementation
+• Checkout with stripe for credit card payments
+• Checkout with cash on delivery
+• User dashboard with password update, purchase history, Invoice/PDF download
+• Deployment to Heroku / Netlify
 
-### `yarn test`
+## WHAT ADMINS CAN DO
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+• Products CRUD
+• Categories and Sub-Categories CRUD
+• Create and Remove User Permissions
+• Upload and Resize Product Images
+• Carousal CRUD
+• Cancel an Order
+• Marking the order as Delivered
+• Delete unnecessary Ratings
 
-### `yarn build`
+## WHAT CUSTOMERS / USERS CAN DO
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+• SignUp by Google/FB
+• Login using username and password
+• Browse Products
+• Browse by Categories and Sub Categories
+• Searching the products
+• Wishlist items
+• Filter products by Price, Rating, Category, Brand
+• Add and Remove items from Cart
+• Applying Coupon during Checkout
+• Update Password and User Details
+• PDF/Invoice Download after successful order
+• Cash on Delivery
+• Sort products by Rating, Price, Date Added.
+• Payment with Stripe
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## FLOW CHART
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Flow Chart](https://github.com/attainu/capstone-project-mintu-krishnan-au13/blob/dev/documents/Flowchart.jpg)
 
-### `yarn eject`
+## TECHNOLOGIES
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+• React for Front End
+• Redux for State Management
+• Firebase for handling Authentication
+• Express JS framework
+• Ant Design or Material UI for Styling Components
+• MongoDB as Database
+• Mongoose for Database Management
+• NodeJS as Backend
+• Stripe Payment Integration
+• Express File-upload / Multer with Sharp
+• Cloudinary for storing Images
+• Heroku / Netlify for hosting
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## FUTURE SCOPE
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+• Live Tracking of Product
