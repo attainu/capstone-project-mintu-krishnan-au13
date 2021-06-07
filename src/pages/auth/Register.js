@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { auth } from '../../firebase';
 import { Button } from 'antd';
+import { LoginOutlined } from '@ant-design/icons';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -47,6 +48,7 @@ const Register = () => {
           shape="round"
           type="submit"
           size="large"
+          icon={<LoginOutlined />}
         >
           Register
         </Button>

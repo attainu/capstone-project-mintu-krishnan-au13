@@ -1,5 +1,6 @@
 import { Button } from 'antd';
 import React, { useEffect, useState } from 'react';
+import { LoginOutlined } from '@ant-design/icons';
 
 import { toast } from 'react-toastify';
 
@@ -83,6 +84,7 @@ const RegisterComplete = ({ history }) => {
           shape="round"
           block
           size="large"
+          icon={<LoginOutlined />}
         >
           Complete Registration
         </Button>
