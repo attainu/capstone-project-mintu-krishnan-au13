@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { auth, googleAuthProvider } from '../../firebase';
+import { Link } from 'react-router-dom';
 import { Button } from 'antd';
 import { LoginOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
@@ -84,6 +85,9 @@ const Login = ({ history }) => {
         />
 
         <br />
+        <Link to="/forgot/password" className="float-right text-danger">
+          Forgot Password
+        </Link>
         {!loading && (
           <Button
             onClick={handleSubmit}
