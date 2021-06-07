@@ -5,24 +5,22 @@ import './index.css';
 import App from './App';
 import 'antd/dist/antd.css';
 
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
-import {composeWithDevTools} from 'redux-devtools-extension';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
 import rootReducer from './reducers';
 
 //store
 const store = createStore(rootReducer, composeWithDevTools());
 
-
 ReactDOM.render(
   //<React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
       <App />
-      </BrowserRouter>
-    </Provider>,
+    </BrowserRouter>
+  </Provider>,
   //</React.StrictMode>,
   document.getElementById('root')
 );
-
-

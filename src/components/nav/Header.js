@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, Typography } from 'antd';
+import { Menu, Typography, Avatar } from 'antd';
 import {
   UserOutlined,
   SettingOutlined,
@@ -9,7 +9,7 @@ import {
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 const { Title } = Typography;
@@ -18,6 +18,8 @@ const { SubMenu, Item } = Menu;
 const Header = () => {
   const [current, setCurrent] = useState('home');
   let dispatch = useDispatch();
+  const { user } = useSelector((state) => ({ ...state }));
+
   let history = useHistory();
 
   const handleClick = (e) => {
@@ -30,7 +32,7 @@ const Header = () => {
       type: 'LOGGED_OUT',
       payload: null,
     });
-    history.push('./login');
+    history.push('/login');
   };
 
   return (
@@ -53,25 +55,37 @@ const Header = () => {
         <Link to="/">Home</Link>
       </Item>
 
-      <Item key="register" icon={<UserAddOutlined />} className="float-right">
-        <Link to="/register">Register</Link>
-      </Item>
-      <Item key="login" className="float-right" icon={<UserOutlined />}>
-        <Link to="/login">Login</Link>
-      </Item>
-
-      <SubMenu
-        key="username"
-        icon={<SettingOutlined />}
-        title="Username"
-        className="float-right"
-      >
-        <Item key="setting:1">Option 1</Item>
-        <Item key="setting:2">Option 2</Item>
-        <Item icon={<LogoutOutlined />} onClick={logout}>
-          LogOut
+      {!user && (
+        <Item key="register" icon={<UserAddOutlined />} className="float-right">
+          <Link to="/register">Register</Link>
         </Item>
-      </SubMenu>
+      )}
+
+      {!user && (
+        <Item key="login" className="float-right" icon={<UserOutlined />}>
+          <Link to="/login">Login</Link>
+        </Item>
+      )}
+
+      {user && (
+        <SubMenu
+          key="username"
+          icon={
+            <Avatar
+              style={{ backgroundColor: '#87d068' }}
+              icon={<UserOutlined />}
+            />
+          }
+          title={user.email && user.email.split('@')[0]}
+          className="float-right"
+        >
+          <Item key="setting:1">View Profile</Item>
+          <Item key="setting:2">Settings</Item>
+          <Item key="logout" icon={<LogoutOutlined />} onClick={logout}>
+            LogOut
+          </Item>
+        </SubMenu>
+      )}
     </Menu>
   );
 };

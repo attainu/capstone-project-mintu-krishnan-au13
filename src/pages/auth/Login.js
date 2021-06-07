@@ -1,16 +1,66 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { auth } from '../../firebase';
+import { auth, googleAuthProvider } from '../../firebase';
 import { Button } from 'antd';
 import { LoginOutlined } from '@ant-design/icons';
+import { Spin } from 'antd';
+import { LoadingOutlined, GoogleOutlined } from '@ant-design/icons';
 
-const Login = () => {
+const antIcon = (
+  <LoadingOutlined style={{ fontSize: 24, color: 'white' }} spin />
+);
+const Login = ({ history }) => {
   const [email, setEmail] = useState('mintu.krish999@gmail.com');
   const [password, setPassword] = useState('mintu12345');
+  const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email, password);
+    // console.log(email, password);
+    setLoading(true);
+    try {
+      const result = await auth.signInWithEmailAndPassword(email, password);
+      const { user } = result;
+      const idTokenResult = await user.getIdTokenResult();
+
+      dispatch({
+        type: 'LOGGED_IN_USER',
+        payload: {
+          email: user.email,
+          token: idTokenResult.token,
+        },
+      });
+      setLoading(false);
+      toast.success('Logged in Successfully');
+      history.push('/');
+    } catch (error) {
+      setLoading(false);
+      toast.error(error.message);
+    }
+  };
+  const googleLogin = async () => {
+    auth
+      .signInWithPopup(googleAuthProvider)
+      .then(async (result) => {
+        const { user } = result;
+        const idTokenResult = await user.getIdTokenResult();
+
+        dispatch({
+          type: 'LOGGED_IN_USER',
+          payload: {
+            email: user.email,
+            token: idTokenResult.token,
+          },
+        });
+        toast.success('Logged in Successfully');
+        history.push('/');
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
 
   const loginForm = () => {
@@ -34,18 +84,30 @@ const Login = () => {
         />
 
         <br />
-        <Button
-          onClick={handleSubmit}
-          className="my-4 btn btn-raised btn-primary"
-          block
-          shape="round"
-          icon={<LoginOutlined />}
-          size="large"
-          disabled={!email || password.length < 6}
-          type="submit"
-        >
-          Login
-        </Button>
+        {!loading && (
+          <Button
+            onClick={handleSubmit}
+            className="mt-4 btn btn-raised btn-primary"
+            block
+            shape="round"
+            icon={<LoginOutlined />}
+            size="large"
+            disabled={!email || password.length < 6}
+            type="submit"
+          >
+            Login
+          </Button>
+        )}
+        {loading && (
+          <Button
+            className="mt-4 btn btn-raised btn-primary"
+            block
+            shape="round"
+            size="large"
+          >
+            <Spin indicator={antIcon} />
+          </Button>
+        )}
       </form>
     );
   };
@@ -61,6 +123,18 @@ const Login = () => {
           </p>
 
           {loginForm()}
+
+          <Button
+            onClick={googleLogin}
+            className="mb-4 btn btn-raised "
+            block
+            shape="round"
+            icon={<GoogleOutlined />}
+            size="large"
+            type="danger"
+          >
+            Login with Google
+          </Button>
 
           <p className="text-center h6">
             By continuing you agree to our{' '}
