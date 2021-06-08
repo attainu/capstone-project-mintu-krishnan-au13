@@ -7,6 +7,19 @@ import { Button } from 'antd';
 import { LoginOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
 import { LoadingOutlined, GoogleOutlined } from '@ant-design/icons';
+import axios from 'axios';
+
+const createOrUpdateUser = async (authtoken) => {
+  return await axios.post(
+    process.env.REACT_APP_API,
+    {},
+    {
+      headers: {
+        authtoken,
+      },
+    }
+  );
+};
 
 const antIcon = (
   <LoadingOutlined style={{ fontSize: 24, color: 'white' }} spin />
@@ -33,16 +46,20 @@ const Login = ({ history }) => {
       const { user } = result;
       const idTokenResult = await user.getIdTokenResult();
 
-      dispatch({
-        type: 'LOGGED_IN_USER',
-        payload: {
-          email: user.email,
-          token: idTokenResult.token,
-        },
-      });
-      setLoading(false);
-      toast.success('Logged in Successfully');
-      history.push('/');
+      createOrUpdateUser(idTokenResult.token)
+        .then((res) => console.log('CREATE OR UPDATE RES', res))
+        .catch();
+
+      // dispatch({
+      //   type: 'LOGGED_IN_USER',
+      //   payload: {
+      //     email: user.email,
+      //     token: idTokenResult.token,
+      //   },
+      // });
+      // setLoading(false);
+      // toast.success('Logged in Successfully');
+      // history.push('/');
     } catch (error) {
       setLoading(false);
       toast.error(error.message);
