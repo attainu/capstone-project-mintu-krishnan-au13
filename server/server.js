@@ -2,11 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const { readdirSync } = require('fs');
 const chalk = require('chalk');
 require('dotenv').config();
 const port = process.env.PORT || 4000;
-
-const authRoutes = require('./routes/auth');
 
 const app = express();
 
@@ -35,7 +34,9 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-app.get('/api', authRoutes);
+// app.use('/api', require('./routes/auth'));
+
+readdirSync('./routes').map((r) => app.use('/api', require('./routes/' + r)));
 
 app.listen(port, () => {
   console.log(chalk.bgYellow.black(` App running on port ${port}... `));
