@@ -44,27 +44,27 @@ const ForgotPassword = ({ history }) => {
   };
 
   return (
-    <div className="container col-md-6 offset-md-3 p-5">
+    <div className='container col-md-6 offset-md-3 p-5'>
       <h4>Forgot Password</h4>
 
       <form onSubmit={handleSubmit}>
         <input
-          type="email"
-          className="form-control py-3"
+          type='email'
+          className='form-control py-3'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Type your email"
+          placeholder='Type your email'
           autoFocus
         />
         <br />
         {!loading && (
           <Button
             onClick={handleSubmit}
-            className="my-2 px-5 btn btn-raised btn-warning"
+            className='my-2 px-5 btn btn-raised btn-warning'
             disabled={!email}
-            size="large"
+            size='large'
             icon={<LoginOutlined />}
-            shape="round"
+            shape='round'
             block
           >
             Submit
@@ -73,9 +73,9 @@ const ForgotPassword = ({ history }) => {
 
         {loading && (
           <Button
-            className="my-2 px-5 btn btn-raised btn-warning"
-            size="large"
-            shape="round"
+            className='my-2 px-5 btn btn-raised btn-warning'
+            size='large'
+            shape='round'
             block
           >
             <Spin indicator={antIcon} />

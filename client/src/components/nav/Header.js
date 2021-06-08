@@ -39,37 +39,37 @@ const Header = () => {
     <Menu
       onClick={handleClick}
       selectedKeys={[current]}
-      mode="horizontal"
-      theme="dark"
+      mode='horizontal'
+      theme='dark'
       style={{ background: '#002329' }}
     >
-      <Item key="logo" className="mx-3">
-        <Link to="/">
-          <Title level={3} className="m-2" type="success">
+      <Item key='logo' className='mx-3'>
+        <Link to='/'>
+          <Title level={3} className='m-2' type='success'>
             CROMA
           </Title>
         </Link>
       </Item>
 
-      <Item key="home" icon={<HomeOutlined />}>
-        <Link to="/">Home</Link>
+      <Item key='home' icon={<HomeOutlined />}>
+        <Link to='/'>Home</Link>
       </Item>
 
       {!user && (
-        <Item key="register" icon={<UserAddOutlined />} className="float-right">
-          <Link to="/register">Register</Link>
+        <Item key='register' icon={<UserAddOutlined />} className='float-right'>
+          <Link to='/register'>Register</Link>
         </Item>
       )}
 
       {!user && (
-        <Item key="login" className="float-right" icon={<UserOutlined />}>
-          <Link to="/login">Login</Link>
+        <Item key='login' className='float-right' icon={<UserOutlined />}>
+          <Link to='/login'>Login</Link>
         </Item>
       )}
 
       {user && (
         <SubMenu
-          key="username"
+          key='username'
           icon={
             <Avatar
               style={{ backgroundColor: '#87d068' }}
@@ -77,11 +77,11 @@ const Header = () => {
             />
           }
           title={user.email && user.email.split('@')[0]}
-          className="float-right"
+          className='float-right'
         >
-          <Item key="setting:1">View Profile</Item>
-          <Item key="setting:2">Settings</Item>
-          <Item key="logout" icon={<LogoutOutlined />} onClick={logout}>
+          <Item key='setting:1'>View Profile</Item>
+          <Item key='setting:2'>Settings</Item>
+          <Item key='logout' icon={<LogoutOutlined />} onClick={logout}>
             LogOut
           </Item>
         </SubMenu>
