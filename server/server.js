@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const { readdirSync } = require('fs');
 const chalk = require('chalk');
 require('dotenv').config();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 8000;
 
 const app = express();
 
