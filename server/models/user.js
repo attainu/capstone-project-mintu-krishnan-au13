@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-const { ObjectId } = mongoose.Schema;
+const {
+  ObjectId
+} = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -22,15 +24,13 @@ const userSchema = new mongoose.Schema({
   address: {
     type: String,
   },
-    wishlist: {
-      type: ObjectId,
-      ref: 'Product',
-      required: [true, 'Wishlist must belong to a Product!'],
-    },
-
-  
+  wishlist: {
+    type: ObjectId,
+    ref: 'Product',
+    required: [true, 'Wishlist must belong to a Product!'],
+  },
 },
-{timestamps:true},
+  { timestamps: true }, 
 );
 
 module.exports = mongoose.model('User', userSchema);
