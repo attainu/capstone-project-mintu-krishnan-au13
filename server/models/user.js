@@ -22,11 +22,13 @@ const userSchema = new mongoose.Schema({
   address: {
     type: String,
   },
-  //   wishlist: {
-  //     type: ObjectId,
-  //     ref: 'Product',
-  //     required: [true, 'Wishlist must belong to a Product!'],
-  //   },
+    wishlist: {
+      type: ObjectId,
+      ref: 'Product',
+      required: [true, 'Wishlist must belong to a Product!'],
+    },
+
+  {timestamps:true},
 });
 
 module.exports = mongoose.model('User', userSchema);
