@@ -1,14 +1,16 @@
 import { Button } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { LoginOutlined } from '@ant-design/icons';
-
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-
 import { auth } from '../../firebase';
+import { createOrUpdateUser } from '../../functions/auth';
 
 const RegisterComplete = ({ history }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setEmail(window.localStorage.getItem('emailForRegistration'));
@@ -40,7 +42,25 @@ const RegisterComplete = ({ history }) => {
         await user.updatePassword(password);
         const idTokenResult = await user.getIdTokenResult();
         // redux store
-        console.log('user', user, 'idTokenResult', idTokenResult);
+        createOrUpdateUser(idTokenResult.token)
+          .then((res) => {
+            dispatch({
+              type: 'LOGGED_IN_USER',
+              payload: {
+                name: res.data.name,
+                email: res.data.email,
+                token: idTokenResult.token,
+                role: res.data.role,
+                _id: res.data._id,
+              },
+            });
+
+            toast.success('Successfully Registered');
+            history.push('/');
+          })
+          .catch((err) => {
+            toast.error(err.message);
+          });
 
         // dispatch({
         //   type: 'LOGGED_IN_USER',
@@ -51,8 +71,6 @@ const RegisterComplete = ({ history }) => {
         // });
 
         // redirect
-        toast.success('Successfully Registered');
-        history.push('/');
       }
     } catch (error) {
       console.log(error);

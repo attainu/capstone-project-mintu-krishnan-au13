@@ -7,19 +7,8 @@ import { Button } from 'antd';
 import { LoginOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
 import { LoadingOutlined, GoogleOutlined } from '@ant-design/icons';
-import axios from 'axios';
 
-const createOrUpdateUser = async (authtoken) => {
-  return await axios.post(
-    `${process.env.REACT_APP_API}/create-or-update-user`,
-    {},
-    {
-      headers: {
-        authtoken,
-      },
-    }
-  );
-};
+import { createOrUpdateUser } from '../../functions/auth';
 
 const antIcon = (
   <LoadingOutlined style={{ fontSize: 24, color: 'white' }} spin />
@@ -31,11 +20,11 @@ const Login = ({ history }) => {
 
   const dispatch = useDispatch();
 
-  const { user } = useSelector((state) => ({ ...state }));
+  const { user: user1 } = useSelector((state) => ({ ...state }));
 
   useEffect(() => {
-    if (user && user.token) history.push('/');
-  }, [user]);
+    if (user1 && user1.token) history.push('/');
+  }, [user1]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,19 +36,25 @@ const Login = ({ history }) => {
       const idTokenResult = await user.getIdTokenResult();
 
       createOrUpdateUser(idTokenResult.token)
-        .then((res) => console.log('CREATE OR UPDATE RES', res))
-        .catch();
-
-      // dispatch({
-      //   type: 'LOGGED_IN_USER',
-      //   payload: {
-      //     email: user.email,
-      //     token: idTokenResult.token,
-      //   },
-      // });
-      // setLoading(false);
-      // toast.success('Logged in Successfully');
-      // history.push('/');
+        .then((res) => {
+          dispatch({
+            type: 'LOGGED_IN_USER',
+            payload: {
+              name: res.data.name,
+              email: res.data.email,
+              token: idTokenResult.token,
+              role: res.data.role,
+              _id: res.data._id,
+            },
+          });
+          setLoading(false);
+          toast.success('Logged in Successfully');
+          history.push('/');
+        })
+        .catch((err) => {
+          setLoading(false);
+          toast.error(err.message);
+        });
     } catch (error) {
       setLoading(false);
       toast.error(error.message);
@@ -72,15 +67,24 @@ const Login = ({ history }) => {
         const { user } = result;
         const idTokenResult = await user.getIdTokenResult();
 
-        dispatch({
-          type: 'LOGGED_IN_USER',
-          payload: {
-            email: user.email,
-            token: idTokenResult.token,
-          },
-        });
-        toast.success('Logged in Successfully');
-        history.push('/');
+        createOrUpdateUser(idTokenResult.token)
+          .then((res) => {
+            dispatch({
+              type: 'LOGGED_IN_USER',
+              payload: {
+                name: res.data.name,
+                email: res.data.email,
+                token: idTokenResult.token,
+                role: res.data.role,
+                _id: res.data._id,
+              },
+            });
+            toast.success('Logged in Successfully');
+            history.push('/');
+          })
+          .catch((err) => {
+            toast.error(err.message);
+          });
       })
       .catch((error) => {
         toast.error(error.message);

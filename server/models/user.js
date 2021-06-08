@@ -5,7 +5,6 @@ const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, 'User must have a name!'],
     },
     email: {
       type: String,
@@ -16,6 +15,9 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: 'subscriber',
     },
+    picture: {
+      type: String,
+    },
     cart: {
       type: Array,
       default: [],
@@ -23,11 +25,11 @@ const userSchema = new mongoose.Schema(
     address: {
       type: String,
     },
-    wishlist: {
-      type: ObjectId,
-      ref: 'Product',
-      required: [true, 'Wishlist must belong to a Product!'],
-    },
+    // wishlist: {
+    //   type: ObjectId,
+    //   ref: 'Product',
+    //   required: [true, 'Wishlist must belong to a Product!'],
+    // },
   },
   {
     timestamps: true,
