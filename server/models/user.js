@@ -28,7 +28,9 @@ const userSchema = new mongoose.Schema({
       required: [true, 'Wishlist must belong to a Product!'],
     },
 
-  {timestamps:true},
-});
+  
+},
+{timestamps:true},
+);
 
 module.exports = mongoose.model('User', userSchema);
