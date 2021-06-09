@@ -19,12 +19,19 @@ const Login = ({ history }) => {
   const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
-
   const { user: user1 } = useSelector((state) => ({ ...state }));
 
   useEffect(() => {
     if (user1 && user1.token) history.push('/');
   }, [user1]);
+
+  const roleBasedRedirect = (res) => {
+    if (res.data.role === 'admin') {
+      history.push('/admin/dashboard');
+    } else {
+      history.push('/user/history');
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,7 +56,7 @@ const Login = ({ history }) => {
           });
           setLoading(false);
           toast.success('Logged in Successfully');
-          history.push('/');
+          roleBasedRedirect(res);
         })
         .catch((err) => {
           setLoading(false);
@@ -80,7 +87,7 @@ const Login = ({ history }) => {
               },
             });
             toast.success('Logged in Successfully');
-            history.push('/');
+            roleBasedRedirect(res);
           })
           .catch((err) => {
             toast.error(err.message);
