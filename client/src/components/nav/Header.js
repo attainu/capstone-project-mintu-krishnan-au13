@@ -79,7 +79,17 @@ const Header = () => {
           title={user.name}
           className='float-right'
         >
-          <Item key='setting:1'>View Profile</Item>
+          {user && user.role === 'admin' && (
+            <Item key='setting:1'>
+              <Link to='/admin/dashboard'>Dashboard</Link>
+            </Item>
+          )}
+          {user && user.role === 'subscriber' && (
+            <Item key='setting:1'>
+              <Link to='/user/history'>Profile</Link>
+            </Item>
+          )}
+
           <Item key='setting:2'>Settings</Item>
           <Item key='logout' icon={<LogoutOutlined />} onClick={logout}>
             LogOut
