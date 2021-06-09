@@ -43,7 +43,7 @@ const Header = () => {
       theme='dark'
       style={{ background: '#002329' }}
     >
-      <Item key='logo' className='mx-3'>
+      <Item key='logo'>
         <Link to='/'>
           <Title level={3} className='m-2' type='success'>
             CROMA
@@ -51,9 +51,9 @@ const Header = () => {
         </Link>
       </Item>
 
-      <Item key='home' icon={<HomeOutlined />}>
+      {/* <Item key='home' icon={<HomeOutlined />}>
         <Link to='/'>Home</Link>
-      </Item>
+      </Item> */}
 
       {!user && (
         <Item key='register' icon={<UserAddOutlined />} className='float-right'>
