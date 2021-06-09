@@ -23,7 +23,7 @@ const Login = ({ history }) => {
 
   useEffect(() => {
     if (user1 && user1.token) history.push('/');
-  }, [user1]);
+  }, [user1, history]);
 
   const roleBasedRedirect = (res) => {
     if (res.data.role === 'admin') {
