@@ -1,14 +1,14 @@
 import React from 'react';
 import UserNav from '../../components/nav/UserNav';
 
-const History = () => {
+const Wishlist = () => {
   return (
     <div className='row'>
-      <UserNav page={1} />
+      <UserNav page={3} />
 
-      <div className='col d-flex'>user history page</div>
+      <div className='col d-flex'>user Wishlist page</div>
     </div>
   );
 };
 
-export default History;
+export default Wishlist;

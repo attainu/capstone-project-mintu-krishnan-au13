@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, Button } from 'antd';
 import {
   AppstoreOutlined,
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
   PieChartOutlined,
   DesktopOutlined,
   ContainerOutlined,
@@ -11,7 +10,7 @@ import {
 } from '@ant-design/icons';
 const { SubMenu } = Menu;
 
-const UserNav = () => {
+const UserNav = ({ page }) => {
   const [collapsed, setCollapsed] = useState(window.innerWidth < 576);
 
   useEffect(() => {
@@ -33,28 +32,22 @@ const UserNav = () => {
 
   return (
     <div>
-      {/* <Button
-        type='primary'
-        onClick={toggleCollapsed}
-        style={{ marginBottom: 16 }}
-      >
-        {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
-      </Button> */}
       <Menu
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
+        defaultSelectedKeys={[`${page}`]}
+        // defaultOpenKeys={['sub1']}
         mode='inline'
         theme='dark'
+        style={{ background: '#002329', height: '100vh' }}
         inlineCollapsed={collapsed}
       >
         <Menu.Item key='1' icon={<PieChartOutlined />}>
-          Option 1
+          <Link to='/user/history'>History</Link>
         </Menu.Item>
         <Menu.Item key='2' icon={<DesktopOutlined />}>
-          Option 2
+          <Link to='/user/password'>Password</Link>
         </Menu.Item>
         <Menu.Item key='3' icon={<ContainerOutlined />}>
-          Option 3
+          <Link to='/user/wishlist'>Wishlist</Link>
         </Menu.Item>
         <SubMenu key='sub1' icon={<MailOutlined />} title='Navigation One'>
           <Menu.Item key='5'>Option 5</Menu.Item>
