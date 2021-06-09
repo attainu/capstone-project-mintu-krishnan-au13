@@ -92,6 +92,7 @@ const RegisterComplete = ({ history }) => {
           type='password'
           className='form-control py-3'
           value={password}
+          autoComplete='on'
           onChange={(e) => setPassword(e.target.value)}
           placeholder='Enter Password'
         />

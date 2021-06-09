@@ -18,12 +18,13 @@ const Login = ({ history }) => {
   const [password, setPassword] = useState('mintu12345');
   const [loading, setLoading] = useState(false);
 
-  const dispatch = useDispatch();
-  const { user: user1 } = useSelector((state) => ({ ...state }));
+  const { user } = useSelector((state) => ({ ...state }));
 
   useEffect(() => {
-    if (user1 && user1.token) history.push('/');
-  }, [user1, history]);
+    if (user && user.token) history.push('/');
+  }, [user, history]);
+
+  const dispatch = useDispatch();
 
   const roleBasedRedirect = (res) => {
     if (res.data.role === 'admin') {
@@ -113,6 +114,7 @@ const Login = ({ history }) => {
         <input
           type='password'
           className='form-control py-3'
+          autoComplete='on'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder='Enter Password'

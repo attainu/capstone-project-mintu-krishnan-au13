@@ -9,13 +9,11 @@ const Register = ({ history }) => {
   const [email, setEmail] = useState('');
 
   const { user } = useSelector((state) => ({ ...state }));
-
   useEffect(() => {
     if (user && user.token) history.push('/');
   }, [user, history]);
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const config = {
         url: process.env.REACT_APP_REGISTER_REDIRECT_URL,

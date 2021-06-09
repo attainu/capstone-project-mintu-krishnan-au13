@@ -32,6 +32,7 @@ const Password = () => {
         <input
           type='password'
           onChange={(e) => setPassword(e.target.value)}
+          autoComplete='on'
           className='form-control'
           placeholder='Enter new password'
           disabled={loading}
