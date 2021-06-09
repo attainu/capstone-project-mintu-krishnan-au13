@@ -2,19 +2,19 @@ import { Route, Switch } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { toast } from 'react-toastify';
+import { auth } from './firebase';
+import { useDispatch } from 'react-redux';
+import { currentUser } from '../src/functions/auth';
+
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Home from './pages/Home';
 import Header from './components/nav/Header';
-
-import 'react-toastify/dist/ReactToastify.css';
 import RegisterComplete from './pages/auth/RegisterComplete';
 import ForgotPassword from './pages/auth/ForgotPassword';
+import History from './pages/user/History';
 
-import { auth } from './firebase';
-import { useDispatch } from 'react-redux';
-
-import { currentUser } from '../src/functions/auth';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -57,6 +57,7 @@ function App() {
         <Route exact path='/register' component={Register} />
         <Route exact path='/register/complete' component={RegisterComplete} />
         <Route exact path='/forgot/password' component={ForgotPassword} />
+        <Route exact path='/user/history' component={History} />
       </Switch>
     </>
   );
