@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, 'User must have an email!'],
       index: true,
+      unique: true,
     },
     role: {
       type: String,
