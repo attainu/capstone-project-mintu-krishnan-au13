@@ -11,8 +11,18 @@ exports.create = async (req, res) => {
   }
 };
 
-exports.list = async (req, res) =>
+exports.list = async (req, res) => {
   res.json(await Sub.find({}).sort({ createdAt: -1 }).exec());
+};
+
+exports.specificList = async (req, res) => {
+  const { parent } = req.body;
+  if (parent) {
+    res.json(await Sub.find({ parent }).sort({ createdAt: -1 }).exec());
+  } else {
+    res.json('Empty');
+  }
+};
 
 exports.read = async (req, res) => {
   let sub = await Sub.findOne({ slug: req.params.slug }).exec();
