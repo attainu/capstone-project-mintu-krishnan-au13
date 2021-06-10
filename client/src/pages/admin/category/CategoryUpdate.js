@@ -57,7 +57,7 @@ const CategoryUpdate = ({ history, match }) => {
   return (
     <div className='container-fluid'>
       <div className='row'>
-        <AdminNav />
+        <AdminNav page={4} />
 
         <div className='col'>
           {loading ? (
