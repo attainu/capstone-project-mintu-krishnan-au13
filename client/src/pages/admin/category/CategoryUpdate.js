@@ -42,7 +42,7 @@ const CategoryUpdate = ({ history, match }) => {
       <div className='row'>
         <AdminNav page={4} />
 
-        <div className='col'>
+        <div className='col mt-5 col-md-6 offset-md-2'>
           {loading ? (
             <h4 className='text-danger'>Loading..</h4>
           ) : (
