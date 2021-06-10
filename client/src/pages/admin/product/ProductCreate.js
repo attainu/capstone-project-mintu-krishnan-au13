@@ -8,11 +8,9 @@ const ProductCreate = () => {
   return (
     <div className='container-fluid'>
       <div className='row'>
-        <div className='col-md-2'>
-          <AdminNav />
-        </div>
+        <AdminNav />
 
-        <div className='col-md-10'>product create form</div>
+        <div className='col'>product create form</div>
       </div>
     </div>
   );
