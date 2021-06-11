@@ -9,15 +9,22 @@ const AdminRoute = ({ children, ...rest }) => {
   const [ok, setOk] = useState(false);
 
   useEffect(() => {
-    if (user && user.token) {
-      currentAdmin(user.token)
-        .then((res) => {
-          setOk(true);
-        })
-        .catch((err) => {
-          setOk(false);
-        });
+    const role = localStorage.getItem('role');
+
+    if (role === 'admin') {
+      setOk(true);
+    } else {
+      setOk(false);
     }
+    // if (user && user.token) {
+    // currentAdmin(user.token)
+    //   .then((res) => {
+    //     setOk(true);
+    //   })
+    //   .catch((err) => {
+    //     setOk(false);
+    //   });
+    // }
   }, [user]);
 
   return ok ? <Route {...rest} /> : <LoadingToRedirect />;
