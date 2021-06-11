@@ -14,6 +14,8 @@ import { Link } from 'react-router-dom';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import CategoryForm from '../../../components/forms/CategoryForm';
 import LocalSearch from '../../../components/forms/LocalSearch';
+import Admin from '../../../components/UI/Admin';
+import AdminDash from '../../../components/UI/AdminDash';
 
 const SubCreate = () => {
   const { user } = useSelector((state) => ({ ...state }));
@@ -89,25 +91,35 @@ const SubCreate = () => {
   const searched = (keyword) => (c) => c.name.toLowerCase().includes(keyword);
 
   return (
-    <div className='container-fluid'>
-      <div className='row'>
-        <AdminNav page={5} />
+    // <div className='container-fluid'>
+    //   <div className='row'>
+    //     <AdminNav page={5} />
 
-        <div className='col mt-5 col-md-6 offset-md-2'>
+    //     <div className='col mt-5 col-md-6 offset-md-2'>
+    <Admin page={5}>
+      <AdminDash>
+        <div className='card dark-bg-color mt-5 z-depth-2'>
           {loading ? (
             <h4 className='text-danger'>Loading..</h4>
           ) : (
-            <h4>Create sub category</h4>
+            <h4 className='text-center blue-text mt-4'>CREATE SUB CATEGORY</h4>
           )}
 
-          <div className='form-group'>
-            <label>Parent category</label>
+          <div className='input-group px-4 mt-4'>
+            <div className='input-group-prepend no-border'>
+              <label
+                className='input-group-text black-color blue-bg-color '
+                for='inputGroupSelect01'
+              >
+                PARENT CATEGORY
+              </label>
+            </div>
             <select
-              name='category'
-              className='form-control'
+              className='browser-default dark-bg-color white-color custom-select'
+              id='inputGroupSelect01'
               onChange={onChangeHandler}
             >
-              <option>Please select</option>
+              <option selected>Please select</option>
               {categories.length > 0 &&
                 categories.map((c) => (
                   <option key={c._id} value={c._id}>
@@ -117,40 +129,79 @@ const SubCreate = () => {
             </select>
           </div>
 
+          {/* <select
+              name='category'
+              className='mdb-select md-form'
+              onChange={onChangeHandler}
+            >
+              <option selected>Please select</option>
+              {categories.length > 0 &&
+                categories.map((c) => (
+                  <option key={c._id} value={c._id}>
+                    {c.name}
+                  </option>
+                ))}
+            </select> */}
+
           <CategoryForm
             handleSubmit={handleSubmit}
             name={name}
             setName={setName}
           />
+        </div>
+        {/* step 2 and step 3 */}
 
-          {/* step 2 and step 3 */}
-
-          {subs && subs.length > 0 && (
-            <LocalSearch keyword={keyword} setKeyword={setKeyword} />
-          )}
-
-          {/* step 5 */}
+        {subs && subs.length > 0 && (
+          <LocalSearch keyword={keyword} setKeyword={setKeyword} />
+        )}
+        <div className='row'>
           {subs &&
             subs.length > 0 &&
             subs.filter(searched(keyword)).map((s) => (
-              <div className='alert alert-secondary' key={s._id}>
-                {s.name}
-                <span
-                  onClick={() => handleRemove(s.slug)}
-                  className='btn btn-sm float-right'
-                >
-                  <DeleteOutlined className='text-danger' />
-                </span>
-                <Link to={`/admin/sub/${s.slug}`}>
-                  <span className='btn btn-sm float-right'>
-                    <EditOutlined className='text-warning' />
-                  </span>
-                </Link>
+              <div className='col-md-4 my-3 ' key={s._id}>
+                <div className='card card-cascade z-depth-3 dark-bg-color'>
+                  <div className='view view-cascade gradient-card-header'>
+                    <h4 className='card-header-title text-uppercase grey-text'>
+                      {s.name}
+                    </h4>
+                    <Link
+                      to={`/admin/sub/${s.slug}`}
+                      type='button '
+                      className='btn-floating'
+                    >
+                      <i class=' btn-info far fa-edit'></i>
+                    </Link>
+                    <a type='button ' className='btn-floating'>
+                      <i
+                        class='btn-danger far fa-trash-alt'
+                        onClick={() => handleRemove(s.slug)}
+                      ></i>
+                    </a>
+                  </div>
+                </div>
               </div>
+
+              // <div className='alert alert-secondary' key={s._id}>
+              //   {s.name}
+              //   <span
+              //     onClick={() => handleRemove(s.slug)}
+              //     className='btn btn-sm float-right'
+              //   >
+              //     <DeleteOutlined className='text-danger' />
+              //   </span>
+              //   <Link to={`/admin/sub/${s.slug}`}>
+              //     <span className='btn btn-sm float-right'>
+              //       <EditOutlined className='text-warning' />
+              //     </span>
+              //   </Link>
+              // </div>
             ))}
         </div>
+      </AdminDash>
+    </Admin>
+    /* </div>
       </div>
-    </div>
+    </div> */
   );
 };
 

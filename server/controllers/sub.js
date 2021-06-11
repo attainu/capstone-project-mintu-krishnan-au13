@@ -4,6 +4,7 @@ const slugify = require('slugify');
 exports.create = async (req, res) => {
   try {
     const { name, parent } = req.body;
+    console.log(name, parent);
     res.json(await new Sub({ name, parent, slug: slugify(name) }).save());
   } catch (err) {
     // console.log(err);
@@ -31,14 +32,16 @@ exports.read = async (req, res) => {
 
 exports.update = async (req, res) => {
   const { name } = req.body;
+  console.log(req.params.slug, name);
   try {
     const updated = await Sub.findOneAndUpdate(
       { slug: req.params.slug },
       { name, slug: slugify(name) },
       { new: true }
-    );
+    ).exec();
     res.json(updated);
   } catch (err) {
+    console.log(err);
     res.status(400).send('Sub update failed');
   }
 };

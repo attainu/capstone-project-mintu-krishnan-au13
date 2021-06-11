@@ -4,6 +4,8 @@ import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { getCategory, updateCategory } from '../../../functions/category';
 import CategoryForm from '../../../components/forms/CategoryForm';
+import AdminDash from '../../../components/UI/AdminDash';
+import Admin from '../../../components/UI/Admin';
 
 const CategoryUpdate = ({ history, match }) => {
   const { user } = useSelector((state) => ({ ...state }));
@@ -38,27 +40,23 @@ const CategoryUpdate = ({ history, match }) => {
   };
 
   return (
-    <div className='container-fluid light-dark-bg-color'>
-      <div className='row'>
-        <AdminNav page={4} />
+    <Admin page={4}>
+      <AdminDash>
+        <div className='card dark-bg-color mt-5 z-depth-2'>
+          {loading ? (
+            <h4 className='text-danger'>Loading..</h4>
+          ) : (
+            <h4 className='text-center blue-text mt-4'>UPDATE CATEGORY</h4>
+          )}
 
-        <div className='col mt-5 col-md-8 offset-md-1'>
-          <div className='card dark-bg-color mt-5 z-depth-2'>
-            {loading ? (
-              <h4 className='text-danger'>Loading..</h4>
-            ) : (
-              <h4 className='text-center blue-text mt-4'>UPDATE CATEGORY</h4>
-            )}
-
-            <CategoryForm
-              handleSubmit={handleSubmit}
-              name={name}
-              setName={setName}
-            />
-          </div>
+          <CategoryForm
+            handleSubmit={handleSubmit}
+            name={name}
+            setName={setName}
+          />
         </div>
-      </div>
-    </div>
+      </AdminDash>
+    </Admin>
   );
 };
 

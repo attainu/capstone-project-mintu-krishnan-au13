@@ -12,7 +12,7 @@ const subSchema = new mongoose.Schema(
     },
     slug: {
       type: String,
-      unique: true,
+      unique: [true, 'Name already taken'],
       lowercase: true,
       index: true,
     },

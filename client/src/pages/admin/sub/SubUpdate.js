@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import CategoryForm from '../../../components/forms/CategoryForm';
 import LocalSearch from '../../../components/forms/LocalSearch';
+import Admin from '../../../components/UI/Admin';
+import AdminDash from '../../../components/UI/AdminDash';
 
 const SubUpdate = ({ match, history }) => {
   const { user } = useSelector((state) => ({ ...state }));
@@ -51,18 +53,39 @@ const SubUpdate = ({ match, history }) => {
   };
 
   return (
-    <div className='container-fluid'>
-      <div className='row'>
-        <AdminNav />
-
-        <div className='col mt-5 col-md-6 offset-md-2'>
+    <Admin page={5}>
+      <AdminDash>
+        <div className='card dark-bg-color mt-5 z-depth-2'>
           {loading ? (
             <h4 className='text-danger'>Loading..</h4>
           ) : (
-            <h4>Update sub category</h4>
+            <h4 className='text-center blue-text mt-4'>UPDATE SUB CATEGORY</h4>
           )}
+          <div className='input-group px-4 mt-4'>
+            <div className='input-group-prepend no-border'>
+              <label
+                className='input-group-text black-color blue-bg-color '
+                for='inputGroupSelect01'
+              >
+                PARENT CATEGORY
+              </label>
+            </div>
+            <select
+              className='browser-default dark-bg-color white-color custom-select'
+              id='inputGroupSelect01'
+              onChange={(e) => setParent(e.target.value)}
+            >
+              <option selected>Please select</option>
+              {categories.length > 0 &&
+                categories.map((c) => (
+                  <option key={c._id} value={c._id} selected={c._id === parent}>
+                    {c.name}
+                  </option>
+                ))}
+            </select>
+          </div>
 
-          <div className='form-group'>
+          {/* <div className='form-group'>
             <label>Parent category</label>
             <select
               name='category'
@@ -77,7 +100,7 @@ const SubUpdate = ({ match, history }) => {
                   </option>
                 ))}
             </select>
-          </div>
+          </div> */}
 
           <CategoryForm
             handleSubmit={handleSubmit}
@@ -85,8 +108,8 @@ const SubUpdate = ({ match, history }) => {
             setName={setName}
           />
         </div>
-      </div>
-    </div>
+      </AdminDash>
+    </Admin>
   );
 };
 
