@@ -41,11 +41,12 @@ const Header = () => {
       selectedKeys={[current]}
       mode='horizontal'
       theme='dark'
-      style={{ background: '#002329' }}
+      style={{ background: '#14181f' }}
+      className='fixed-top'
     >
       <Item key='logo'>
         <Link to='/'>
-          <Title level={3} className='m-2' type='success'>
+          <Title level={3} className='m-2 e-p-text'>
             CROMA
           </Title>
         </Link>
@@ -72,7 +73,7 @@ const Header = () => {
           key='username'
           icon={
             <Avatar
-              style={{ backgroundColor: '#87d068' }}
+              style={{ backgroundColor: '#00adb5' }}
               icon={<UserOutlined />}
             />
           }

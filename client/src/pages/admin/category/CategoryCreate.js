@@ -8,9 +8,11 @@ import {
   removeCategory,
 } from '../../../functions/category';
 import { Link } from 'react-router-dom';
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+
 import CategoryForm from '../../../components/forms/CategoryForm';
 import LocalSearch from '../../../components/forms/LocalSearch';
+import Admin from '../../../components/UI/Admin';
+import AdminDash from '../../../components/UI/AdminDash';
 
 const CategoryCreate = () => {
   const { user } = useSelector((state) => ({ ...state }));
@@ -31,11 +33,9 @@ const CategoryCreate = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(name);
     setLoading(true);
     createCategory({ name }, user.token)
       .then((res) => {
-        // console.log(res)
         setLoading(false);
         setName('');
         toast.success(`"${res.data.name}" is created`);
@@ -49,8 +49,6 @@ const CategoryCreate = () => {
   };
 
   const handleRemove = async (slug) => {
-    // let answer = window.confirm("Delete?");
-    // console.log(answer, slug);
     if (window.confirm('Delete?')) {
       setLoading(true);
       removeCategory(slug, user.token)
@@ -72,45 +70,52 @@ const CategoryCreate = () => {
   const searched = (keyword) => (c) => c.name.toLowerCase().includes(keyword);
 
   return (
-    <div className='container-fluid'>
-      <div className='row'>
-        <AdminNav page={4} />
-
-        <div className='col mt-5 col-md-6 offset-md-2'>
+    <Admin page={4}>
+      <AdminDash>
+        <div className='card dark-bg-color mt-5 z-depth-2'>
           {loading ? (
             <h4 className='text-danger'>Loading..</h4>
           ) : (
-            <h4>Create category</h4>
+            <h4 className='text-center blue-text mt-4'>CREATE CATEGORY</h4>
           )}
           <CategoryForm
             handleSubmit={handleSubmit}
             name={name}
             setName={setName}
           />
+        </div>
 
-          {/* step 2 & step 3 */}
-          <LocalSearch keyword={keyword} setKeyword={setKeyword} />
+        {/* step 2 & step 3 */}
+        <LocalSearch keyword={keyword} setKeyword={setKeyword} />
 
-          {/* step 5 */}
+        <div className='row'>
           {categories.filter(searched(keyword)).map((c) => (
-            <div className='alert alert-secondary' key={c._id}>
-              {c.name}
-              <span
-                onClick={() => handleRemove(c.slug)}
-                className='btn btn-sm float-right'
-              >
-                <DeleteOutlined className='text-danger' />
-              </span>
-              <Link to={`/admin/category/${c.slug}`}>
-                <span className='btn btn-sm float-right'>
-                  <EditOutlined className='text-warning' />
-                </span>
-              </Link>
+            <div className='col-md-4 my-3 ' key={c._id}>
+              <div className='card card-cascade z-depth-3 dark-bg-color'>
+                <div className='view view-cascade gradient-card-header'>
+                  <h4 className='card-header-title text-uppercase grey-text'>
+                    {c.name}
+                  </h4>
+                  <Link
+                    to={`/admin/category/${c.slug}`}
+                    type='button '
+                    className='btn-floating'
+                  >
+                    <i class=' btn-info far fa-edit'></i>
+                  </Link>
+                  <a type='button ' className='btn-floating'>
+                    <i
+                      class='btn-danger far fa-trash-alt'
+                      onClick={() => handleRemove(c.slug)}
+                    ></i>
+                  </a>
+                </div>
+              </div>
             </div>
           ))}
         </div>
-      </div>
-    </div>
+      </AdminDash>
+    </Admin>
   );
 };
 

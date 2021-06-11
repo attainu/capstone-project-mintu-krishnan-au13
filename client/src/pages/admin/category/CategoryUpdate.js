@@ -38,23 +38,24 @@ const CategoryUpdate = ({ history, match }) => {
   };
 
   return (
-    <div className='container-fluid'>
+    <div className='container-fluid light-dark-bg-color'>
       <div className='row'>
         <AdminNav page={4} />
 
-        <div className='col mt-5 col-md-6 offset-md-2'>
-          {loading ? (
-            <h4 className='text-danger'>Loading..</h4>
-          ) : (
-            <h4>Update category</h4>
-          )}
+        <div className='col mt-5 col-md-8 offset-md-1'>
+          <div className='card dark-bg-color mt-5 z-depth-2'>
+            {loading ? (
+              <h4 className='text-danger'>Loading..</h4>
+            ) : (
+              <h4 className='text-center blue-text mt-4'>UPDATE CATEGORY</h4>
+            )}
 
-          <CategoryForm
-            handleSubmit={handleSubmit}
-            name={name}
-            setName={setName}
-          />
-          <hr />
+            <CategoryForm
+              handleSubmit={handleSubmit}
+              name={name}
+              setName={setName}
+            />
+          </div>
         </div>
       </div>
     </div>

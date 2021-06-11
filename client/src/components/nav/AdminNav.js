@@ -31,13 +31,13 @@ const AdminNav = ({ page }) => {
   };
 
   return (
-    <div>
+    <div className='position-sticky '>
       <Menu
         defaultSelectedKeys={[`${page}`]}
         // defaultOpenKeys={['sub1']}
         mode='inline'
         theme='dark'
-        style={{ background: '#002329', height: '100vh' }}
+        style={{ background: '#222831', minHeight: '100vh', height: ' 100% ' }}
         inlineCollapsed={collapsed}
       >
         <Menu.Item key='1' icon={<PieChartOutlined />}>
