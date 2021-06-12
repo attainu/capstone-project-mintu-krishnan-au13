@@ -18,9 +18,10 @@ exports.authCheck = async (req, res, next) => {
 };
 
 exports.adminCheck = async (req, res, next) => {
-  if (!req.user.email) {
+  console.log(req.user.email);
+  if (req.user.email === undefined) {
     res.status(403).json({
-      err: 'Admin resource. Access denied.',
+      err: 'Admin resource. Access denied. Login Again',
     });
     return;
   }
