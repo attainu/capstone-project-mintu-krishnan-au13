@@ -42,6 +42,7 @@ function App() {
               payload: {
                 name: res.data.name,
                 email: res.data.email,
+                picture: res.data.picture,
                 token: idTokenResult.token,
                 role: res.data.role,
                 _id: res.data._id,

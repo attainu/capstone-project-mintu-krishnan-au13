@@ -1,15 +1,12 @@
 import React from 'react';
-import AdminNav from '../../components/nav/AdminNav';
+import Admin from '../../components/UI/Admin';
+import AdminDash from '../../components/UI/AdminDash';
 
 const AdminDashboard = () => {
   return (
-    <div className='container-fluid'>
-      <div className='row'>
-        <AdminNav page={1} />
-
-        <div className='col'>Admin nav page</div>
-      </div>
-    </div>
+    <Admin page={1}>
+      <AdminDash></AdminDash>
+    </Admin>
   );
 };
 

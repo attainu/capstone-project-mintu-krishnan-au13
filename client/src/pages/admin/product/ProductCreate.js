@@ -3,16 +3,14 @@ import AdminNav from '../../../components/nav/AdminNav';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { createProduct } from '../../../functions/product';
+import Admin from '../../../components/UI/Admin';
+import AdminDash from '../../../components/UI/AdminDash';
 
 const ProductCreate = () => {
   return (
-    <div className='container-fluid'>
-      <div className='row'>
-        <AdminNav />
-
-        <div className='col'>product create form</div>
-      </div>
-    </div>
+    <Admin page={2}>
+      <AdminDash></AdminDash>
+    </Admin>
   );
 };
 

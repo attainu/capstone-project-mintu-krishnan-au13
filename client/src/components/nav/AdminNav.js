@@ -40,6 +40,9 @@ const AdminNav = ({ page }) => {
         style={{ background: '#222831', minHeight: '100vh', height: ' 100% ' }}
         inlineCollapsed={collapsed}
       >
+        <Menu.Item key='0' icon={<PieChartOutlined />}>
+          <Link to='/admin/dashboard'>Dashboard</Link>
+        </Menu.Item>
         <Menu.Item key='1' icon={<PieChartOutlined />}>
           <Link to='/admin/dashboard'>Dashboard</Link>
         </Menu.Item>

@@ -44,10 +44,10 @@ const Header = () => {
       style={{ background: '#14181f' }}
       className='fixed-top'
     >
-      <Item key='logo'>
+      <Item key='logo' className='blue-bg-color'>
         <Link to='/'>
-          <Title level={3} className='m-2 e-p-text'>
-            CROMA
+          <Title level={3} className='m-2 mx-2  '>
+            CromaX
           </Title>
         </Link>
       </Item>
@@ -72,10 +72,21 @@ const Header = () => {
         <SubMenu
           key='username'
           icon={
-            <Avatar
-              style={{ backgroundColor: '#00adb5' }}
-              icon={<UserOutlined />}
-            />
+            user.picture ? (
+              <img
+                src={user.picture}
+                className='rounded-circle z-depth-0'
+                alt='avatar image'
+                height='35'
+              />
+            ) : (
+              <img
+                src='https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg'
+                className='rounded-circle z-depth-0'
+                alt='avatar image'
+                height='35'
+              />
+            )
           }
           title={user.name}
           className='float-right'
