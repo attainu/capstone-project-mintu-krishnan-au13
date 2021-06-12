@@ -8,7 +8,7 @@ const CategoryForm = ({ handleSubmit, name, setName }) => {
           <div className='md-form input-group mb-3'>
             <input
               type='text'
-              class='form-control light-color'
+              className='form-control light-color'
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder='Enter New Category '
@@ -16,9 +16,9 @@ const CategoryForm = ({ handleSubmit, name, setName }) => {
               required
               aria-describedby='MaterialButton-addon2'
             />
-            <div class='input-group-append'>
+            <div className='input-group-append'>
               <button
-                class='btn btn-md blue-bg-color m-0 px-3'
+                className='btn btn-md blue-bg-color m-0 px-3'
                 type='submit'
                 id='MaterialButton-addon2'
               >

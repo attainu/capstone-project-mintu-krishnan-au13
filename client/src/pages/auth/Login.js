@@ -124,7 +124,7 @@ const Login = ({ history }) => {
               className='form-control validate'
             />
             <label
-              for='inputValidationEx'
+              htmlFor='inputValidationEx'
               // data-error='wrong'
               // data-success='right'
             >
@@ -151,7 +151,7 @@ const Login = ({ history }) => {
               className='form-control validate'
             />
             <label
-              for='inputValidationEx2'
+              htmlFor='inputValidationEx2'
               // data-error='wrong'
               // data-success='right'
             >
@@ -177,7 +177,7 @@ const Login = ({ history }) => {
             //   type='submit'
             // >
             //   <span
-            //     class='spinner-grow spinner-grow-sm'
+            //     className='spinner-grow spinner-grow-sm'
             //     role='status'
             //     aria-hidden='true'
             //   ></span>
@@ -186,10 +186,10 @@ const Login = ({ history }) => {
             <button
               onClick={handleSubmit}
               type='submit'
-              class='btn btn-primary btn-rounded btn-block my-2'
+              className='btn btn-primary btn-rounded btn-block my-2'
               disabled={!email || password.length < 6}
             >
-              <i class='mr-2 fas fa-sign-in-alt'></i>
+              <i className='mr-2 fas fa-sign-in-alt'></i>
               Login
             </button>
           )}
@@ -204,10 +204,10 @@ const Login = ({ history }) => {
             // </Button>
             <button
               type='submit'
-              class='btn btn-primary btn-rounded btn-block my-2'
+              className='btn btn-primary btn-rounded btn-block my-2'
             >
               <span
-                class='spinner-grow spinner-grow-sm'
+                className='spinner-grow spinner-grow-sm'
                 role='status'
                 aria-hidden='true'
               ></span>
@@ -239,15 +239,15 @@ const Login = ({ history }) => {
             size='large'
             type='danger'
           >
-            <i class='fab fa-google'></i>
+            <i className='fab fa-google'></i>
             Login with Google
           </Button> */}
           <button
             type='button'
-            class='btn btn-danger btn-rounded btn-block my-2'
+            className='btn btn-danger btn-rounded btn-block my-2'
             onClick={googleLogin}
           >
-            <i class='mr-2  fab fa-google'></i>
+            <i className='mr-2  fab fa-google'></i>
             Login with Google
           </button>
 

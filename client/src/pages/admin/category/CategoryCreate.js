@@ -101,11 +101,11 @@ const CategoryCreate = () => {
                     type='button '
                     className='btn-floating'
                   >
-                    <i class=' btn-info far fa-edit'></i>
+                    <i className=' btn-info far fa-edit'></i>
                   </Link>
                   <a type='button ' className='btn-floating'>
                     <i
-                      class='btn-danger far fa-trash-alt'
+                      className='btn-danger far fa-trash-alt'
                       onClick={() => handleRemove(c.slug)}
                     ></i>
                   </a>

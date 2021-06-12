@@ -65,7 +65,7 @@ const SubUpdate = ({ match, history }) => {
             <div className='input-group-prepend no-border'>
               <label
                 className='input-group-text black-color blue-bg-color '
-                for='inputGroupSelect01'
+                htmlFor='inputGroupSelect01'
               >
                 PARENT CATEGORY
               </label>

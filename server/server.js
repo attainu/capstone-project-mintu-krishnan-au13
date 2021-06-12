@@ -9,13 +9,13 @@ const port = process.env.PORT || 8000;
 
 const app = express();
 
-// const DB = process.env.DATABASE.replace(
-//   '<PASSWORD>',
-//   process.env.DATABASE_PASSWORD
-// );
+const DB = process.env.DATABASE.replace(
+  '<PASSWORD>',
+  process.env.DATABASE_PASSWORD
+);
 
 mongoose
-  .connect(process.env.L_DATABASE, {
+  .connect(DB, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true,

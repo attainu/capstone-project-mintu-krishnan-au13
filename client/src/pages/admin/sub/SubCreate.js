@@ -109,7 +109,7 @@ const SubCreate = () => {
             <div className='input-group-prepend no-border'>
               <label
                 className='input-group-text black-color blue-bg-color '
-                for='inputGroupSelect01'
+                htmlFor='inputGroupSelect01'
               >
                 PARENT CATEGORY
               </label>
@@ -169,11 +169,11 @@ const SubCreate = () => {
                       type='button '
                       className='btn-floating'
                     >
-                      <i class=' btn-info far fa-edit'></i>
+                      <i className=' btn-info far fa-edit'></i>
                     </Link>
                     <a type='button ' className='btn-floating'>
                       <i
-                        class='btn-danger far fa-trash-alt'
+                        className='btn-danger far fa-trash-alt'
                         onClick={() => handleRemove(s.slug)}
                       ></i>
                     </a>
