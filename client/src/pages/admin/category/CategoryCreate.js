@@ -13,6 +13,7 @@ import CategoryForm from '../../../components/forms/CategoryForm';
 import LocalSearch from '../../../components/forms/LocalSearch';
 import Admin from '../../../components/UI/Admin';
 import AdminDash from '../../../components/UI/AdminDash';
+import Card from '../../../components/UI/Card';
 
 const CategoryCreate = () => {
   const { user } = useSelector((state) => ({ ...state }));
@@ -72,7 +73,7 @@ const CategoryCreate = () => {
   return (
     <Admin page={4}>
       <AdminDash>
-        <div className='card dark-bg-color mt-5 z-depth-2'>
+        <Card>
           {loading ? (
             <h4 className='text-danger'>Loading..</h4>
           ) : (
@@ -83,7 +84,7 @@ const CategoryCreate = () => {
             name={name}
             setName={setName}
           />
-        </div>
+        </Card>
 
         {/* step 2 & step 3 */}
         <LocalSearch keyword={keyword} setKeyword={setKeyword} />

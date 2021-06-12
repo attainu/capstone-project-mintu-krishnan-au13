@@ -9,24 +9,25 @@ import FileUpload from '../../../components/forms/FileUpload';
 import { LoadingOutlined } from '@ant-design/icons';
 import Admin from '../../../components/UI/Admin';
 import AdminDash from '../../../components/UI/AdminDash';
+import Card from '../../../components/UI/Card';
 
 const initialState = {
-  title: 'Macbook Pro',
-  description: 'This is the best Apple product',
-  price: '45000',
+  title: '',
+  description: '',
+  price: '',
   categories: [],
   category: '',
   subs: [],
-  shipping: 'Yes',
-  quantity: '50',
+  shipping: '',
+  quantity: '',
   images: [],
   colors: ['Black', 'Brown', 'Silver', 'White', 'Blue'],
-  brands: ['Apple', 'Samsung', 'Microsoft', 'Lenovo', 'ASUS'],
-  color: 'White',
-  brand: 'Apple',
+  brands: ['Apple', 'Samsung', 'Microsoft', 'Lenovo', 'ASUS', 'LG'],
+  color: '',
+  brand: '',
 };
 
-const ProductCreate = () => {
+const ProductCreate = ({ history }) => {
   const [values, setValues] = useState(initialState);
   const [subOptions, setSubOptions] = useState([]);
   const [showSub, setShowSub] = useState(false);
@@ -47,8 +48,10 @@ const ProductCreate = () => {
     createProduct(values, user.token)
       .then((res) => {
         console.log(res);
-        window.alert(`"${res.data.title}" is created`);
-        window.location.reload();
+        toast.success(`"${res.data.title}" is created`);
+        // window.alert(`"${res.data.title}" is created`);
+        // window.location.reload();
+        history.push('/admin/products');
       })
       .catch((err) => {
         console.log(err);
@@ -59,7 +62,7 @@ const ProductCreate = () => {
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
-    // console.log(e.target.name, " ----- ", e.target.value);
+    // console.log(e.target.name, ' ----- ', e.target.value);
   };
 
   const handleCatagoryChange = (e) => {
@@ -74,14 +77,9 @@ const ProductCreate = () => {
   };
 
   return (
-    // <div className='container-fluid'>
-    //   <div className='row'>
-    //     <div className='col-md-2'>
-    //       <AdminNav />
-    //     </div>
     <Admin page={2}>
       <AdminDash>
-        <div className='card dark-bg-color my-5 z-depth-2 grey-color px-3'>
+        <Card>
           {loading ? (
             <LoadingOutlined className='text-danger h1' />
           ) : (
@@ -90,7 +88,6 @@ const ProductCreate = () => {
           <hr />
 
           {/* {JSON.stringify(values.images)} */}
-
           <div className='p-3'>
             <FileUpload
               values={values}
@@ -98,7 +95,6 @@ const ProductCreate = () => {
               setLoading={setLoading}
             />
           </div>
-
           <ProductCreateForm
             handleSubmit={handleSubmit}
             handleChange={handleChange}
@@ -108,11 +104,9 @@ const ProductCreate = () => {
             subOptions={subOptions}
             showSub={showSub}
           />
-        </div>
+        </Card>
       </AdminDash>
     </Admin>
-    /* </div>
-    </div> */
   );
 };
 

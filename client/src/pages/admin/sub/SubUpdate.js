@@ -10,6 +10,7 @@ import CategoryForm from '../../../components/forms/CategoryForm';
 import LocalSearch from '../../../components/forms/LocalSearch';
 import Admin from '../../../components/UI/Admin';
 import AdminDash from '../../../components/UI/AdminDash';
+import Card from '../../../components/UI/Card';
 
 const SubUpdate = ({ match, history }) => {
   const { user } = useSelector((state) => ({ ...state }));
@@ -55,7 +56,7 @@ const SubUpdate = ({ match, history }) => {
   return (
     <Admin page={5}>
       <AdminDash>
-        <div className='card dark-bg-color mt-5 z-depth-2'>
+        <Card>
           {loading ? (
             <h4 className='text-danger'>Loading..</h4>
           ) : (
@@ -107,7 +108,7 @@ const SubUpdate = ({ match, history }) => {
             name={name}
             setName={setName}
           />
-        </div>
+        </Card>
       </AdminDash>
     </Admin>
   );

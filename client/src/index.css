@@ -3,47 +3,44 @@
   padding: 0;
   margin: 0;
 }
-.admin-dash {
+/* .admin-dash {
   background-image: linear-gradient(
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
     url('./img/admin-bg.jpg');
-}
+} */
 
+/* ADMIN */
 .light-dark-bg-color {
-  background-color: #364f6b !important;
+  background-color: #2f5971 !important;
 }
-
 .blue-bg-color {
   background-color: #00adb5 !important;
 }
 .grey-bg-color {
   background-color: gray !important;
 }
-
 .dark-bg-color {
   background-color: #222831 !important;
 }
-
 .blue-color {
   color: #00adb5 !important;
 }
 .grey-color {
   color: gray !important;
 }
-
 .dark-color {
   color: #222831 !important;
 }
 .light-color {
   color: #b9bcc0 !important;
 }
-
 .white-color {
   color: #eef1f5 !important;
 }
-
 .black-color {
   color: black !important;
 }
+
+/* USER */

@@ -6,6 +6,7 @@ import { getCategory, updateCategory } from '../../../functions/category';
 import CategoryForm from '../../../components/forms/CategoryForm';
 import AdminDash from '../../../components/UI/AdminDash';
 import Admin from '../../../components/UI/Admin';
+import Card from '../../../components/UI/Card';
 
 const CategoryUpdate = ({ history, match }) => {
   const { user } = useSelector((state) => ({ ...state }));
@@ -42,7 +43,7 @@ const CategoryUpdate = ({ history, match }) => {
   return (
     <Admin page={4}>
       <AdminDash>
-        <div className='card dark-bg-color mt-5 z-depth-2'>
+        <Card>
           {loading ? (
             <h4 className='text-danger'>Loading..</h4>
           ) : (
@@ -54,7 +55,7 @@ const CategoryUpdate = ({ history, match }) => {
             name={name}
             setName={setName}
           />
-        </div>
+        </Card>
       </AdminDash>
     </Admin>
   );
