@@ -49,7 +49,7 @@ const Login = ({ history }) => {
             type: 'LOGGED_IN_USER',
             payload: {
               name: res.data.name,
-              picture: res.data.pictue,
+              picture: res.data.picture,
               email: res.data.email,
               token: idTokenResult.token,
               role: res.data.role,
@@ -82,7 +82,7 @@ const Login = ({ history }) => {
               type: 'LOGGED_IN_USER',
               payload: {
                 name: res.data.name,
-                picture: res.data.pictue,
+                picture: res.data.picture,
                 email: res.data.email,
                 token: idTokenResult.token,
                 role: res.data.role,
