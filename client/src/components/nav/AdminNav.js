@@ -31,7 +31,7 @@ const AdminNav = ({ page }) => {
   };
 
   return (
-    <div className='position-sticky '>
+    <div className='position-fixed '>
       <Menu
         defaultSelectedKeys={[`${page}`]}
         // defaultOpenKeys={['sub1']}
@@ -46,11 +46,11 @@ const AdminNav = ({ page }) => {
         <Menu.Item key='1' icon={<PieChartOutlined />}>
           <Link to='/admin/dashboard'>Dashboard</Link>
         </Menu.Item>
+        <Menu.Item key='3' icon={<ContainerOutlined />}>
+          <Link to='/admin/products'>All Products</Link>
+        </Menu.Item>
         <Menu.Item key='2' icon={<DesktopOutlined />}>
           <Link to='/admin/product'>Product</Link>
-        </Menu.Item>
-        <Menu.Item key='3' icon={<ContainerOutlined />}>
-          <Link to='/admin/products'>Products</Link>
         </Menu.Item>
         <Menu.Item key='4' icon={<AppstoreOutlined />}>
           <Link to='/admin/category'>Category</Link>
@@ -63,6 +63,9 @@ const AdminNav = ({ page }) => {
         </Menu.Item>
         <Menu.Item key='7' icon={<MailOutlined />}>
           <Link to='/user/password'>Password</Link>
+        </Menu.Item>
+        <Menu.Item key='8' icon={<MailOutlined />}>
+          <Link to='/admin/bootstrap'>Bootstrap</Link>
         </Menu.Item>
       </Menu>
     </div>

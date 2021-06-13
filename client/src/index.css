@@ -11,12 +11,28 @@
     url('./img/admin-bg.jpg');
 } */
 
+.marginleft {
+  margin-left: 152px;
+  min-height: 100vh;
+}
+
+@media (max-width: 576px) {
+  .marginleft {
+    margin-left: 80px !important;
+  }
+  .col {
+    padding: 0;
+  }
+}
 /* ADMIN */
 .light-dark-bg-color {
   background-color: #2f5971 !important;
 }
 .blue-bg-color {
   background-color: #00adb5 !important;
+}
+.light-blue-bg-color {
+  background-color: #c3ecee !important;
 }
 .grey-bg-color {
   background-color: gray !important;

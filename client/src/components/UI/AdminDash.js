@@ -1,7 +1,13 @@
 import React from 'react';
 
 const AdminDash = ({ children }) => {
-  return <div className='col mt-5 col-md-8 offset-md-1 '>{children}</div>;
+  return (
+    <div className='marginleft container-fluid my-5'>
+      <div className='col mt-5  col-sm-12 col-md-10 offset-md-1 '>
+        {children}
+      </div>
+    </div>
+  );
 };
 
 export default AdminDash;

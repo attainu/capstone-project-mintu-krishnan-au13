@@ -83,18 +83,17 @@ const ProductCreate = ({ history }) => {
           {loading ? (
             <LoadingOutlined className='text-danger h1' />
           ) : (
-            <h4 className='text-center blue-text mt-4'>PRODUCT CREATE</h4>
+            <h4 className='text-center blue-text mt-4'>CREATE PRODUCT</h4>
           )}
           <hr />
-
-          {/* {JSON.stringify(values.images)} */}
-          <div className='p-3'>
+          <div className='mx-5 p-2'>
             <FileUpload
               values={values}
               setValues={setValues}
               setLoading={setLoading}
             />
           </div>
+
           <ProductCreateForm
             handleSubmit={handleSubmit}
             handleChange={handleChange}
