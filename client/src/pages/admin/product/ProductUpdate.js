@@ -7,6 +7,9 @@ import { getCategories, getCategorySubs } from '../../../functions/category';
 import FileUpload from '../../../components/forms/FileUpload';
 import { LoadingOutlined } from '@ant-design/icons';
 import ProductUpdateForm from '../../../components/forms/ProductUpdateForm';
+import Card from '../../../components/UI/Card';
+import Admin from '../../../components/UI/Admin';
+import AdminDash from '../../../components/UI/AdminDash';
 
 const initialState = {
   title: '',
@@ -115,13 +118,9 @@ const ProductUpdate = ({ match, history }) => {
   };
 
   return (
-    <div className='container-fluid'>
-      <div className='row'>
-        <div className='col-md-2'>
-          <AdminNav />
-        </div>
-
-        <div className='col-md-10'>
+    <Admin page={4}>
+      <AdminDash>
+        <Card className='col-md-10'>
           {loading ? (
             <LoadingOutlined className='text-danger h1' />
           ) : (
@@ -151,9 +150,9 @@ const ProductUpdate = ({ match, history }) => {
             selectedCategory={selectedCategory}
           />
           <hr />
-        </div>
-      </div>
-    </div>
+        </Card>
+      </AdminDash>
+    </Admin>
   );
 };
 

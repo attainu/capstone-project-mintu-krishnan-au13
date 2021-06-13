@@ -5,6 +5,9 @@ import AdminProductCard from '../../../components/cards/AdminProductCard';
 import { removeProduct } from '../../../functions/product';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import Admin from '../../../components/UI/Admin';
+import WiderAdminDash from '../../../components/UI/WiderAdminDash';
+import Card from '../../../components/UI/Card';
 
 const AllProducts = () => {
   const [products, setProducts] = useState([]);
@@ -46,31 +49,31 @@ const AllProducts = () => {
   };
 
   return (
-    <div className='container-fluid'>
-      <div className='row'>
-        <div className='col-md-2'>
-          <AdminNav />
-        </div>
-
-        <div className='col'>
+    // <div className='container-fluid'>
+    //   <div className='row'>
+    //     <div className='col-md-2'>
+    //       <AdminNav />
+    //     </div>
+    <Admin page={3}>
+      <WiderAdminDash>
+        <Card>
           {loading ? (
             <h4 className='text-danger'>Loading...</h4>
           ) : (
-            <h4>All Products</h4>
+            <h4 className='text-center blue-text my-4'>ALL PRODUCTS</h4>
           )}
-          <div className='row'>
-            {products.map((product) => (
-              <div key={product._id} className='col-md-4 pb-3'>
-                <AdminProductCard
-                  product={product}
-                  handleRemove={handleRemove}
-                />
-              </div>
-            ))}
-          </div>
+        </Card>
+        <div className='row mt-4'>
+          {products.map((product) => (
+            <div key={product._id} className='col-lg-3 col-md-4 mb-4 '>
+              <AdminProductCard product={product} handleRemove={handleRemove} />
+            </div>
+          ))}
         </div>
-      </div>
-    </div>
+      </WiderAdminDash>
+    </Admin>
+    //   </div>
+    // </div>
   );
 };
 
