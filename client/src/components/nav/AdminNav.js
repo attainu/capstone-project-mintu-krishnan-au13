@@ -52,6 +52,9 @@ const AdminNav = ({ page }) => {
         <Menu.Item key='2' icon={<DesktopOutlined />}>
           <Link to='/admin/product'>Product</Link>
         </Menu.Item>
+        <Menu.Item key='9' icon={<DesktopOutlined />}>
+          <Link to='/admin/product'>Brand</Link>
+        </Menu.Item>
         <Menu.Item key='4' icon={<AppstoreOutlined />}>
           <Link to='/admin/category'>Category</Link>
         </Menu.Item>

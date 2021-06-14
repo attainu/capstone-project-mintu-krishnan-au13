@@ -57,9 +57,9 @@ const AdminProductCard = ({ product, handleRemove }) => {
 
         <h4 className='card-title white-color'>{title}</h4>
 
-        <p className='card-text light-color'>
+        {/* <p className='card-text light-color'>
           {`${description && description.substring(0, 40)}...`}
-        </p>
+        </p> */}
 
         <Link
           to={`/admin/product/${slug}`}

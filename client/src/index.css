@@ -53,10 +53,21 @@
   color: #b9bcc0 !important;
 }
 .white-color {
-  color: #eef1f5 !important;
+  color: #cacdd1 !important;
 }
 .black-color {
   color: black !important;
 }
 
-/* USER */
+.ant-select-selection-overflow {
+  background: #222831 !important;
+}
+
+.ant-select-multiple .ant-select-selection-item {
+  background-color: #2f5971 !important;
+  color: #cacdd1 !important;
+}
+.ant-select-multiple .ant-select-selector {
+  padding: 0 !important;
+  margin: 0 !important;
+}

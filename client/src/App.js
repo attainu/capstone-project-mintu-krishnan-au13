@@ -92,7 +92,7 @@ function App() {
           path='/admin/product/:slug'
           component={ProductUpdate}
         />
-        <AdminRoute exact path='/admin/bootstrap' component={Bootstrap} />
+        <AdminRoute path='*' component={Bootstrap} />
       </Switch>
     </>
   );
