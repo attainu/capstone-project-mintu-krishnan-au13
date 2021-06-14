@@ -1,5 +1,5 @@
-import React from "react";
-import { Card, Skeleton } from "antd";
+import React from 'react';
+import { Card, Skeleton } from 'antd';
 
 const LoadingCard = ({ count }) => {
   const cards = () => {
@@ -7,7 +7,7 @@ const LoadingCard = ({ count }) => {
 
     for (let i = 0; i < count; i++) {
       totalCards.push(
-        <Card className="col-md-4">
+        <Card className='col-md-4'>
           <Skeleton active></Skeleton>
         </Card>
       );
@@ -16,7 +16,8 @@ const LoadingCard = ({ count }) => {
     return totalCards;
   };
 
-  return <div className="row pb-5">{cards()}</div>;
+
+  return <div className='row pb-5'>{cards()}</div>;
 };
 
 export default LoadingCard;
