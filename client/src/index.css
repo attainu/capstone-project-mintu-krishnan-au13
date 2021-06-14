@@ -71,3 +71,9 @@
   padding: 0 !important;
   margin: 0 !important;
 }
+
+/* react slick */
+.slick-prev:before,
+.slick-next:before {
+  color: teal !important;
+}
