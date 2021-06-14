@@ -22,7 +22,6 @@ const SingleProduct = ({ product }) => {
         ) : (
           <Card cover={<img src={Laptop} className='mb-3 card-image' />}></Card>
         )}
-
         <Tabs type='card'>
           <TabPane tab='Description' key='1'>
             {description && description}
