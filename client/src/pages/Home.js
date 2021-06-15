@@ -2,22 +2,24 @@ import React from 'react';
 import Jumbotron from '../components/cards/Jumbotron';
 import NewArrivals from '../components/home/NewArrivals';
 import BestSellers from '../components/home/BestSellers';
+import BannerCarousel from '../components/cards/BannerCarousel';
+import CategorySlider from '../components/cards/CategorySlider';
 
 const Home = () => {
   return (
     <>
-      <div className='jumbotron text-danger h1 font-weight-bold text-center'>
+      {/* <div className='jumbotron text-danger h1 font-weight-bold text-center'>
         <Jumbotron text={['Latest Products', 'New Arrivals', 'Best Sellers']} />
+      </div> */}
+      <div className='mt-5'>
+        <BannerCarousel />
       </div>
+      <CategorySlider />
 
-      <h4 className='text-center p-3 mt-5 mb-5 display-1 jumbotron'>
-        New Arrivals
-      </h4>
+    
       <NewArrivals />
 
-      <h4 className='text-center p-3 mt-5 mb-5 display-4 jumbotron'>
-        Best Sellers
-      </h4>
+     
       <BestSellers />
 
       <br />
