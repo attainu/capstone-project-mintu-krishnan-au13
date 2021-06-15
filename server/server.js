@@ -35,6 +35,9 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // app.use('/api', require('./routes/auth'));
+app.get('/', (req, res) => {
+  res.json('ecommerce api working');
+});
 
 readdirSync('./routes').map((r) => app.use('/api', require('./routes/' + r)));
 
