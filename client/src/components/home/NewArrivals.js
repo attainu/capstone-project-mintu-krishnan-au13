@@ -34,7 +34,7 @@ const NewArrivals = () => {
       </h3>
       <div className='container-fluid'>
         {loading ? (
-          <LoadingCard count={3} />
+          <LoadingCard count={4} />
         ) : (
           <div className='row'>
             {products.map((product) => (
@@ -50,7 +50,7 @@ const NewArrivals = () => {
         <nav className='col-md-4 offset-md-4 text-center pt-5 p-3'>
           <Pagination
             current={page}
-            total={(productsCount / 3) * 10}
+            total={(productsCount / 4) * 10}
             onChange={(value) => setPage(value)}
           />
         </nav>

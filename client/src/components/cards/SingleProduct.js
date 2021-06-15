@@ -68,7 +68,7 @@ const SingleProduct = ({ product }) => {
                     <Carousel showArrows={true} autoPlay infiniteLoop>
                       {images &&
                         images.map((i) => (
-                          <div className='w-50'>
+                          <div className='w-60'>
                             <img src={i.url} key={i.public_id} width='100px' />
                           </div>
                         ))}

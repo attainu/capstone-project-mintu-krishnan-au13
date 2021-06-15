@@ -92,7 +92,7 @@ exports.list = async (req, res) => {
     // createdAt/updatedAt, desc/asc, 3
     const { sort, order, page } = req.body;
     const currentPage = page || 1;
-    const perPage = 3; // 3
+    const perPage = 4;
 
     const products = await Product.find({})
       .skip((currentPage - 1) * perPage)
@@ -101,7 +101,6 @@ exports.list = async (req, res) => {
       .sort([[sort, order]])
       .limit(perPage)
       .exec();
-
     res.json(products);
   } catch (err) {
     console.log(err);

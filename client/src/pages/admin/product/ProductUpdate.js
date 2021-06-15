@@ -21,7 +21,19 @@ const initialState = {
   quantity: '',
   images: [],
   colors: ['Black', 'Brown', 'Silver', 'White', 'Blue'],
-  brands: ['Apple', 'Samsung', 'Microsoft', 'Lenovo', 'ASUS'],
+  brands: [
+    'Apple',
+    'Samsung',
+    'Microsoft',
+    'Lenovo',
+    'ASUS',
+    'LG',
+    'JBL',
+    'Philips',
+    'Kubo',
+    'PowerMax',
+    'Sony',
+  ],
   color: '',
   brand: '',
 };
@@ -140,7 +152,6 @@ const ProductUpdate = ({ match, history }) => {
           ) : (
             <h4>Product update</h4>
           )}
-
 
           <div className='p-3'>
             <FileUpload
