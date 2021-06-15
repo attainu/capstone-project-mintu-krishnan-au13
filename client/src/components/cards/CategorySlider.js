@@ -6,7 +6,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const CategorySlider = () => {
-  var settings = {
+  const settings = {
     dots: false,
     infinite: false,
     speed: 500,

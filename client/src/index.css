@@ -77,3 +77,7 @@
 .slick-next:before {
   color: teal !important;
 }
+
+.slide.selected {
+  text-align: -webkit-center !important;
+}

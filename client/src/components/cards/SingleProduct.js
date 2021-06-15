@@ -14,7 +14,7 @@ const SingleProduct = ({ product }) => {
 
   return (
     <>
-      <div className='col-md-6'>
+      {/* <div className='col-md-6'>
         {images && images.length ? (
           <Carousel showArrows={true} autoPlay infiniteLoop>
             {images && images.map((i) => <img src={i.url} key={i.public_id} />)}
@@ -47,6 +47,60 @@ const SingleProduct = ({ product }) => {
         >
           <ProductListItems product={product} />
         </Card>
+      </div> */}
+
+      <div className='container my-5 py-5 z-depth-1'>
+        <section className='text-center'>
+          <h3 className='font-weight-bold mb-5'>Product Details</h3>
+
+          <div className='row'>
+            <div className='col-lg-6'>
+              <div
+                id='carousel-thumb1'
+                className='carousel slide carousel-fade carousel-thumbnails mb-5 pb-4'
+                data-ride='carousel'
+              >
+                <div
+                  className='carousel-inner text-center text-md-left'
+                  role='listbox m-auto w-50'
+                >
+                  {images && images.length ? (
+                    <Carousel showArrows={true} autoPlay infiniteLoop>
+                      {images &&
+                        images.map((i) => (
+                          <div className='w-50'>
+                            <img src={i.url} key={i.public_id} width='100px' />
+                          </div>
+                        ))}
+                    </Carousel>
+                  ) : (
+                    <Card
+                      cover={<img src={Laptop} className='mb-3 card-image' />}
+                    ></Card>
+                  )}
+                </div>
+              </div>
+
+              <div className='row mb-4'>
+                <div className='col-md-12'>
+                  <div id='mdb-lightbox-ui'></div>
+                  <div className='mdb-lightbox no-margin'>
+                    <Tabs type='card'>
+                      <TabPane tab='Description' key='1'>
+                        {description && description}
+                      </TabPane>
+                      <TabPane tab='More' key='2'>
+                        Call use on xxxx xxx xxx to learn more about this
+                        product.
+                      </TabPane>
+                    </Tabs>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ProductListItems product={product} />
+          </div>
+        </section>
       </div>
     </>
   );
