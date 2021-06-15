@@ -28,6 +28,7 @@ const Header = () => {
 
   const logout = () => {
     firebase.auth().signOut();
+    sessionStorage.removeItem('role');
     dispatch({
       type: 'LOGGED_OUT',
       payload: null,

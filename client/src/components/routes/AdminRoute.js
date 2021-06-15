@@ -9,9 +9,9 @@ const AdminRoute = ({ children, ...rest }) => {
   const [ok, setOk] = useState(false);
 
   useEffect(() => {
-    const role = localStorage.getItem('role');
+    const role = sessionStorage.getItem('role');
 
-    if (role === 'admin') {
+    if (role === 'admin' || user.role === 'admin') {
       setOk(true);
     } else {
       setOk(false);

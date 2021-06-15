@@ -14,8 +14,8 @@ const antIcon = (
   <LoadingOutlined style={{ fontSize: 24, color: 'white' }} spin />
 );
 const Login = ({ history }) => {
-  const [email, setEmail] = useState('mintu.krish999@gmail.com');
-  const [password, setPassword] = useState('mintu12345');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
   const { user } = useSelector((state) => ({ ...state }));
@@ -29,8 +29,10 @@ const Login = ({ history }) => {
   const roleBasedRedirect = (res) => {
     if (res.data.role === 'admin') {
       history.push('/admin/dashboard');
+      sessionStorage.setItem('role', 'admin');
     } else {
       history.push('/user/history');
+      sessionStorage.setItem('role', 'user');
     }
   };
 
