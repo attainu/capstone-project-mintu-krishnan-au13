@@ -19,7 +19,7 @@ const ProductListItems = ({ product }) => {
   } = product;
 
   return (
-    <div className='col-md-4 text-center text-md-left'>
+    <div className='col-md-5 text-center text-md-left paddingl'>
       <h2 className='h2-responsive text-center text-md-left product-name font-weight-bold dark-grey-text mb-1 ml-xl-0 ml-4'>
         {title}
       </h2>
@@ -57,14 +57,14 @@ const ProductListItems = ({ product }) => {
       </h3>
 
       <div className='font-weight-normal'>
-        <p className='ml-xl-0 ml-4'>{description}</p>
+        {/* <p className='ml-xl-0 ml-4'>{description}</p> */}
 
         {subs && (
           <p className='ml-xl-0 ml-4'>
             <strong>Sub Category : </strong>
             {subs.map((s) => (
               <Link key={s._id} to={`/sub/${s.slug}`}>
-                <span class='badge badge-default mr-3'> {s.name}</span>
+                <span className='badge badge-default mr-3'> {s.name}</span>
               </Link>
             ))}
           </p>
@@ -73,7 +73,7 @@ const ProductListItems = ({ product }) => {
           <p className='ml-xl-0 ml-4'>
             <strong>Category: </strong>
             <Link to={`/category/${category.slug}`}>
-              <span class='badge badge-secondary'>{category.name}</span>
+              <span className='badge badge-secondary'>{category.name}</span>
             </Link>
           </p>
         )}

@@ -20,7 +20,7 @@ export const showAllAverage = (p) => {
         <div>
           <StarRatings
             rating={result}
-            starRatedColor='blue'
+            starRatedColor='orange'
             numberOfStars={5}
             starDimension='19px'
             starSpacing='2px'
@@ -47,7 +47,7 @@ export const showAllAverage = (p) => {
         <div>
           <StarRatings
             rating={0}
-            starRatedColor='red'
+            starRatedColor='orange'
             numberOfStars={5}
             starDimension='19px'
             starSpacing='2px'

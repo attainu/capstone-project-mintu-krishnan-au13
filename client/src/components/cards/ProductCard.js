@@ -65,17 +65,21 @@ const ProductCard = ({ product }) => {
         <div className='card-footer pb-0'>
           <div className='row mb-0'>
             <div className=''>
-              <strong>{price * (90 / 100)} ₹ </strong>
-              <s>{price} ₹</s>
+              <h5>
+                <span className='badge badge-danger'>
+                  ₹ {price * (90 / 100)}
+                </span>
+              </h5>
+              <s>₹ {price} </s>
             </div>
-            <div className='ml-auto'>
+            <div className='ml-auto  '>
               <a
-                className='bold'
+                className='bold '
                 data-toggle='tooltip'
                 data-placement='top'
                 title='Add to Cart'
               >
-                <i className='fas fa-shopping-cart ml-3 '></i>
+                <i className='hovercart fas fa-shopping-cart p-1 m-2 fa-2x '></i>
               </a>
             </div>
           </div>

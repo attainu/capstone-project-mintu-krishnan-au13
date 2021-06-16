@@ -34,7 +34,7 @@ export const showAverage = (p) => {
         <p className=' product mb-0 ml-xl-0 ml-4 text-md-left'>
           <StarRatings
             rating={result}
-            starRatedColor='red'
+            starRatedColor='orange'
             numberOfStars={5}
             starDimension='25px'
             name='rating'
@@ -55,7 +55,7 @@ export const showAverage = (p) => {
         <p className=' product mb-0 ml-xl-0 ml-4 text-md-left'>
           <StarRatings
             rating={0}
-            starRatedColor='red'
+            starRatedColor='orange'
             numberOfStars={5}
             starDimension='25px'
             name='rating'

@@ -22,7 +22,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
           <h3 className='font-weight-bold mb-5'>Product Details</h3>
 
           <div className='row'>
-            <div className='col-md-6'>
+            <div className='col-md-5'>
               <div
                 id='carousel-thumb1'
                 className='carousel slide carousel-fade carousel-thumbnails mb-5 pb-4'
@@ -66,7 +66,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
               </div>
             </div>
             <ProductListItems product={product} />
-            <div className='mt-5 col-md-1 d-flex flex-column '>
+            <div className='mt-5 col d-flex flex-column '>
               <div className='row text-center justify-content-around '>
                 <div className=''>
                   <RatingModal>
