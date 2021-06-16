@@ -3,6 +3,7 @@ import { Card } from 'antd';
 import { EyeOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import laptop from '../../images/laptop.png';
 import { Link } from 'react-router-dom';
+import { showAllAverage } from '../../functions/allratings';
 
 const { Meta } = Card;
 
@@ -57,23 +58,9 @@ const ProductCard = ({ product }) => {
         </h5>
         <span className='badge badge-danger mb-2'>{brand}</span>
 
-        <ul className='rating'>
-          <li>
-            <i className='fas fa-star blue-text'></i>
-          </li>
-          <li>
-            <i className='fas fa-star blue-text'></i>
-          </li>
-          <li>
-            <i className='fas fa-star blue-text'></i>
-          </li>
-          <li>
-            <i className='fas fa-star blue-text'></i>
-          </li>
-          <li>
-            <i className='fas fa-star blue-text'></i>
-          </li>
-        </ul>
+        {product && product.ratings && product.ratings.length > 0
+          ? showAllAverage(product)
+          : showAllAverage(0)}
 
         <div className='card-footer pb-0'>
           <div className='row mb-0'>

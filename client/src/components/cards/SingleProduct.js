@@ -1,60 +1,28 @@
 import React from 'react';
 import { Card, Tabs } from 'antd';
 import { Link } from 'react-router-dom';
-import { HeartOutlined, ShoppingCartOutlined } from '@ant-design/icons';
+
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Laptop from '../../images/laptop.png';
 import ProductListItems from './ProductListItems';
+import StarRatings from 'react-star-ratings';
+import RatingModal from '../modal/RatingModal';
+import { showAverage } from '../../functions/rating';
 
 const { TabPane } = Tabs;
 
-const SingleProduct = ({ product }) => {
-  const { title, images, description } = product;
+const SingleProduct = ({ product, onStarClick, star }) => {
+  const { title, images, description, _id } = product;
 
   return (
     <>
-      {/* <div className='col-md-6'>
-        {images && images.length ? (
-          <Carousel showArrows={true} autoPlay infiniteLoop>
-            {images && images.map((i) => <img src={i.url} key={i.public_id} />)}
-          </Carousel>
-        ) : (
-          <Card cover={<img src={Laptop} className='mb-3 card-image' />}></Card>
-        )}
-        <Tabs type='card'>
-          <TabPane tab='Description' key='1'>
-            {description && description}
-          </TabPane>
-          <TabPane tab='More' key='2'>
-            Call use on xxxx xxx xxx to learn more about this product.
-          </TabPane>
-        </Tabs>
-      </div>
-
-      <div className='col-md-6'>
-        <h1 className='bg-info p-3'>{title}</h1>
-        <Card
-          actions={[
-            <>
-              <ShoppingCartOutlined className='text-success' /> <br />
-              Add to Cart
-            </>,
-            <Link to='/'>
-              <HeartOutlined className='text-info' /> <br /> Add to Wishlist
-            </Link>,
-          ]}
-        >
-          <ProductListItems product={product} />
-        </Card>
-      </div> */}
-
-      <div className='container my-5 py-5 z-depth-1'>
+      <div className=' my-5 py-5 z-depth-1'>
         <section className='text-center'>
           <h3 className='font-weight-bold mb-5'>Product Details</h3>
 
           <div className='row'>
-            <div className='col-lg-6'>
+            <div className='col-md-6'>
               <div
                 id='carousel-thumb1'
                 className='carousel slide carousel-fade carousel-thumbnails mb-5 pb-4'
@@ -67,9 +35,9 @@ const SingleProduct = ({ product }) => {
                   {images && images.length ? (
                     <Carousel showArrows={true} autoPlay infiniteLoop>
                       {images &&
-                        images.map((i) => (
-                          <div className='w-60'>
-                            <img src={i.url} key={i.public_id} width='100px' />
+                        images.map((img, i) => (
+                          <div key={i} style={{ width: '70%' }}>
+                            <img src={img.url} key={i.public_id} />
                           </div>
                         ))}
                     </Carousel>
@@ -90,8 +58,7 @@ const SingleProduct = ({ product }) => {
                         {description && description}
                       </TabPane>
                       <TabPane tab='More' key='2'>
-                        Call use on xxxx xxx xxx to learn more about this
-                        product.
+                        {description && description}
                       </TabPane>
                     </Tabs>
                   </div>
@@ -99,6 +66,36 @@ const SingleProduct = ({ product }) => {
               </div>
             </div>
             <ProductListItems product={product} />
+            <div className='mt-5 col-md-1 d-flex flex-column '>
+              <div className='row text-center justify-content-around '>
+                <div className=''>
+                  <RatingModal>
+                    <StarRatings
+                      rating={star}
+                      starRatedColor='red'
+                      numberOfStars={5}
+                      starDimension='25px'
+                      name={_id}
+                      changeRating={onStarClick}
+                      isSelectable={true}
+                    />
+                  </RatingModal>
+                  <p className='grey-text'>Rate</p>
+                </div>
+                <div className=''>
+                  <button className='btn btn-outline-danger btn-rounded'>
+                    <i className='fas fa-heart ' aria-hidden='true'></i>
+                  </button>
+                  <p className='grey-text'>Wishlist</p>
+                </div>
+                <div className=''>
+                  <button className='btn btn-outline-primary btn-rounded'>
+                    <i className='fas fa-cart-plus' aria-hidden='true'></i>
+                  </button>
+                  <p className='grey-text'>Add to Cart</p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </div>

@@ -11,19 +11,23 @@ const AdminRoute = ({ children, ...rest }) => {
   useEffect(() => {
     const role = sessionStorage.getItem('role');
 
+    if (!role || !user) {
+      setOk(false);
+      return;
+    }
     if (role === 'admin' || user.role === 'admin') {
       setOk(true);
     } else {
       setOk(false);
     }
     // if (user && user.token) {
-    // currentAdmin(user.token)
-    //   .then((res) => {
-    //     setOk(true);
-    //   })
-    //   .catch((err) => {
-    //     setOk(false);
-    //   });
+    //   currentAdmin(user.token)
+    //     .then((res) => {
+    //       setOk(true);
+    //     })
+    //     .catch((err) => {
+    //       setOk(false);
+    //     });
     // }
   }, [user]);
 

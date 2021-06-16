@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const createProduct = async (product, authtoken) =>
   await axios.post(`${process.env.REACT_APP_API}/product`, product, {
@@ -47,3 +47,6 @@ export const productStar = async (productId, star, authtoken) =>
       },
     }
   );
+
+export const getRelated = async (productId) =>
+  await axios.get(`${process.env.REACT_APP_API}/product/related/${productId}`);
