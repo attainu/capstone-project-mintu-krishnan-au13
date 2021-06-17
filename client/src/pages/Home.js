@@ -4,6 +4,9 @@ import NewArrivals from '../components/home/NewArrivals';
 import BestSellers from '../components/home/BestSellers';
 import BannerCarousel from '../components/cards/BannerCarousel';
 import CategorySlider from '../components/cards/CategorySlider';
+import CategoryList from '../components/category/CategoryList';
+import SubList from '../components/sub/SubList';
+import Footer from '../components/UI/Footer';
 
 const Home = () => {
   return (
@@ -16,14 +19,12 @@ const Home = () => {
       </div>
       <CategorySlider />
 
-    
       <NewArrivals />
 
-     
       <BestSellers />
-
-      <br />
-      <br />
+      <CategoryList />
+      <SubList />
+      <Footer />
     </>
   );
 };
