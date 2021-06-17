@@ -14,7 +14,7 @@ export const showAllAverage = (p) => {
 
     return (
       <div
-        className='row m-4 align-items-center'
+        className='row m-3 align-items-center'
         style={{ justifyContent: 'center' }}
       >
         <div>
@@ -41,7 +41,7 @@ export const showAllAverage = (p) => {
   } else {
     return (
       <div
-        className='row m-4 align-items-center'
+        className='row m-3 align-items-center'
         style={{ justifyContent: 'center' }}
       >
         <div>

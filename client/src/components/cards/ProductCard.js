@@ -35,7 +35,7 @@ const ProductCard = ({ product }) => {
     //   />
     // </Card>
 
-    <div className='card card-ecommerce text-center align-items-center'>
+    <div className='card h-100 card-ecommerce text-center align-items-center '>
       <div className='view overlay '>
         <img
           src={images && images.length ? images[0].url : laptop}
@@ -48,7 +48,7 @@ const ProductCard = ({ product }) => {
         </Link>
       </div>
 
-      <div className='card-body w-100'>
+      <div className='card-body d-flex align-items-stretch flex-column align-self-center justify-content-between w-100'>
         <h5 className='card-title mb-1'>
           <strong>
             <Link to={`/product/${slug}`} className='dark-grey-text'>
@@ -56,17 +56,17 @@ const ProductCard = ({ product }) => {
             </Link>
           </strong>
         </h5>
-        <span className='badge badge-danger mb-2'>{brand}</span>
+        <span className='badge badge-primary m-auto mb-2 p-2'>{brand}</span>
 
         {product && product.ratings && product.ratings.length > 0
           ? showAllAverage(product)
           : showAllAverage(0)}
 
-        <div className='card-footer pb-0'>
+        <div className='card-footer pb-0 '>
           <div className='row mb-0'>
             <div className=''>
               <h5>
-                <span className='badge badge-danger'>
+                <span className='badge badge-danger '>
                   ₹ {price * (90 / 100)}
                 </span>
               </h5>

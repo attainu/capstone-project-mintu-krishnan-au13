@@ -160,24 +160,26 @@ const SubCreate = () => {
             subs.length > 0 &&
             subs.filter(searched(keyword)).map((s) => (
               <div className='col-md-4 my-3 ' key={s._id}>
-                <div className='card card-cascade z-depth-3 dark-bg-color'>
-                  <div className='view view-cascade gradient-card-header'>
+                <div className='card card-cascade z-depth-3 dark-bg-color h-100'>
+                  <div className='view view-cascade gradient-card-header h-100 d-flex flex-column justify-content-center'>
                     <h4 className='card-header-title text-uppercase grey-text'>
                       {s.name}
                     </h4>
-                    <Link
-                      to={`/admin/sub/${s.slug}`}
-                      type='button '
-                      className='btn-floating'
-                    >
-                      <i className=' btn-info far fa-edit'></i>
-                    </Link>
-                    <a type='button ' className='btn-floating'>
-                      <i
-                        className='btn-danger far fa-trash-alt'
-                        onClick={() => handleRemove(s.slug)}
-                      ></i>
-                    </a>
+                    <div>
+                      <Link
+                        to={`/admin/sub/${s.slug}`}
+                        type='button '
+                        className='btn-floating'
+                      >
+                        <i className=' btn-info far fa-edit'></i>
+                      </Link>
+                      <a type='button ' className='btn-floating'>
+                        <i
+                          className='btn-danger far fa-trash-alt'
+                          onClick={() => handleRemove(s.slug)}
+                        ></i>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>

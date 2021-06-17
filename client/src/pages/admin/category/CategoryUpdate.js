@@ -19,7 +19,9 @@ const CategoryUpdate = ({ history, match }) => {
   }, []);
 
   const loadCategory = () =>
-    getCategory(match.params.slug).then((c) => setName(c.data.name));
+    getCategory(match.params.slug).then((c) => {
+      setName(c.data.category.name);
+    });
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -36,7 +36,7 @@ const AdminProductCard = ({ product, handleRemove }) => {
     // </Card>
     // <div className='col-lg-4 col-md-6 mb-4 '>
     <div
-      className='card card-cascade narrower mb-4 text-center dark-bg-color'
+      className='d-flex h-100 card card-cascade narrower my-4 text-center dark-bg-color '
       style={{ marginTop: '28px' }}
     >
       <div className='view view-cascade ' style={{ height: '200px' }}>
@@ -50,7 +50,7 @@ const AdminProductCard = ({ product, handleRemove }) => {
         </a>
       </div>
 
-      <div className='card-body card-body-cascade'>
+      <div className='d-flex flex-column justify-content-between card-body card-body-cascade'>
         <h5 className='pink-text'>
           <i className='fab fa-product-hunt'></i> {brand}
         </h5>
@@ -60,22 +60,22 @@ const AdminProductCard = ({ product, handleRemove }) => {
         {/* <p className='card-text light-color'>
           {`${description && description.substring(0, 40)}...`}
         </p> */}
-
-        <Link
-          to={`/admin/product/${slug}`}
-          type='button'
-          className='btn-floating btn-small btn-tw'
-        >
-          <i className='far fa-edit'></i>
-        </Link>
-
-        <a
-          type='button'
-          className='btn-floating btn-small btn-dribbble'
-          onClick={() => handleRemove(slug)}
-        >
-          <i className='far fa-trash-alt'></i>
-        </a>
+        <div>
+          <Link
+            to={`/admin/product/${slug}`}
+            type='button'
+            className='btn-floating btn-small btn-tw'
+          >
+            <i className='far fa-edit'></i>
+          </Link>
+          <a
+            type='button'
+            className='btn-floating btn-small btn-dribbble'
+            onClick={() => handleRemove(slug)}
+          >
+            <i className='far fa-trash-alt'></i>
+          </a>
+        </div>
       </div>
     </div>
     // </div>

@@ -65,7 +65,10 @@ const AllProducts = () => {
         </Card>
         <div className='row mt-4'>
           {products.map((product) => (
-            <div key={product._id} className='col-lg-3 col-md-4 mb-4 '>
+            <div
+              key={product._id}
+              className='col-lg-3 col-md-4 mb-4 d-flex flex-column'
+            >
               <AdminProductCard product={product} handleRemove={handleRemove} />
             </div>
           ))}

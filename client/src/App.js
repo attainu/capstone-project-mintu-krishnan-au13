@@ -30,6 +30,8 @@ import Bootstrap from './pages/admin/Bootstrap';
 import AllProducts from './pages/admin/product/AllProducts';
 import ProductUpdate from './pages/admin/product/ProductUpdate';
 import Product from './pages/Product';
+import CategoryHome from './pages/category/CategoryHome';
+import SubHome from './pages/sub/SubHome';
 
 function App() {
   const dispatch = useDispatch();
@@ -94,6 +96,8 @@ function App() {
           path='/admin/product/:slug'
           component={ProductUpdate}
         />
+        <Route exact path='/category/:slug' component={CategoryHome} />
+        <Route exact path='/sub/:slug' component={SubHome} />
         <AdminRoute path='*' component={Bootstrap} />
       </Switch>
     </>
