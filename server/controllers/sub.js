@@ -1,21 +1,18 @@
 const Sub = require('../models/sub');
+const Product = require('../models/product');
 const slugify = require('slugify');
 
 exports.create = async (req, res) => {
   try {
     const { name, parent } = req.body;
-    console.log(name, parent);
     res.json(await new Sub({ name, parent, slug: slugify(name) }).save());
   } catch (err) {
-    // console.log(err);
     res.status(400).send('Create sub failed');
   }
 };
 
-exports.list = async (req, res) => {
+exports.list = async (req, res) =>
   res.json(await Sub.find({}).sort({ createdAt: -1 }).exec());
-};
-
 exports.specificList = async (req, res) => {
   const { parent } = req.body;
   if (parent) {
@@ -24,24 +21,28 @@ exports.specificList = async (req, res) => {
     res.json('Empty');
   }
 };
-
 exports.read = async (req, res) => {
   let sub = await Sub.findOne({ slug: req.params.slug }).exec();
-  res.json(sub);
+  const products = await Product.find({ subs: sub })
+    .populate('category')
+    .exec();
+
+  res.json({
+    sub,
+    products,
+  });
 };
 
 exports.update = async (req, res) => {
-  const { name } = req.body;
-  console.log(req.params.slug, name);
+  const { name, parent } = req.body;
   try {
     const updated = await Sub.findOneAndUpdate(
       { slug: req.params.slug },
-      { name, slug: slugify(name) },
+      { name, parent, slug: slugify(name) },
       { new: true }
-    ).exec();
+    );
     res.json(updated);
   } catch (err) {
-    console.log(err);
     res.status(400).send('Sub update failed');
   }
 };
