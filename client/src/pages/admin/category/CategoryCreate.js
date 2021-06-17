@@ -92,24 +92,27 @@ const CategoryCreate = () => {
         <div className='row'>
           {categories.filter(searched(keyword)).map((c) => (
             <div className='col-md-4 my-3 ' key={c._id}>
-              <div className='card card-cascade z-depth-3 dark-bg-color'>
-                <div className='view view-cascade gradient-card-header'>
+              <div className='card card-cascade z-depth-3 dark-bg-color h-100'>
+                <div className='view view-cascade gradient-card-header h-100 d-flex flex-column justify-content-center'>
                   <h4 className='card-header-title text-uppercase grey-text'>
                     {c.name}
                   </h4>
-                  <Link
-                    to={`/admin/category/${c.slug}`}
-                    type='button '
-                    className='btn-floating'
-                  >
-                    <i className=' btn-info far fa-edit'></i>
-                  </Link>
-                  <a type='button ' className='btn-floating'>
-                    <i
-                      className='btn-danger far fa-trash-alt'
-                      onClick={() => handleRemove(c.slug)}
-                    ></i>
-                  </a>
+
+                  <div>
+                    <Link
+                      to={`/admin/category/${c.slug}`}
+                      type='button '
+                      className='btn-floating'
+                    >
+                      <i className=' btn-info far fa-edit'></i>
+                    </Link>
+                    <a type='button ' className='btn-floating'>
+                      <i
+                        className='btn-danger far fa-trash-alt'
+                        onClick={() => handleRemove(c.slug)}
+                      ></i>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
