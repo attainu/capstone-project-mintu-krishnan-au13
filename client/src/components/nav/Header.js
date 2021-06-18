@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import firebase from 'firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Search from '../forms/Search';
 
 const { Title } = Typography;
 const { SubMenu, Item } = Menu;
@@ -109,6 +110,7 @@ const Header = () => {
           </Item>
         </SubMenu>
       )}
+      <Search />
     </Menu>
   );
 };
