@@ -61,9 +61,17 @@ const Header = () => {
         <Search />
       </Item>
 
-      <Item key='home' className='ml-auto pt-2'>
+      <Item
+        key='home'
+        style={{ backgroundColor: '#14181f' }}
+        className='ml-auto pt-2'
+      >
         {cart.length > 0 && (
-          <Badge count={cart.length}>
+          <Badge
+            count={cart.length}
+            size='small'
+            style={{ borderShadow: 'none' }}
+          >
             <Link to='/cart'>
               <i className='fas fa-shopping-cart cyan-text fa-2x'></i>
             </Link>
