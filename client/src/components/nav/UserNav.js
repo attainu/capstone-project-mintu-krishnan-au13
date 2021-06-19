@@ -31,15 +31,17 @@ const UserNav = ({ page }) => {
   };
 
   return (
-    <div>
+    <div className='position-fixed '>
       <Menu
         defaultSelectedKeys={[`${page}`]}
         // defaultOpenKeys={['sub1']}
         mode='inline'
-        theme='dark'
-        style={{ background: '#002329', height: '100vh' }}
+        style={{ minHeight: '100vh', height: '100vh' }}
         inlineCollapsed={collapsed}
       >
+        <Menu.Item key='0' icon={<PieChartOutlined />}>
+          <Link to='/user/history'>History</Link>
+        </Menu.Item>
         <Menu.Item key='1' icon={<PieChartOutlined />}>
           <Link to='/user/history'>History</Link>
         </Menu.Item>
@@ -49,13 +51,13 @@ const UserNav = ({ page }) => {
         <Menu.Item key='3' icon={<ContainerOutlined />}>
           <Link to='/user/wishlist'>Wishlist</Link>
         </Menu.Item>
-        <SubMenu key='sub1' icon={<MailOutlined />} title='Navigation One'>
+        <SubMenu key='sub1' icon={<MailOutlined />} title='Navigation'>
           <Menu.Item key='5'>Option 5</Menu.Item>
           <Menu.Item key='6'>Option 6</Menu.Item>
           <Menu.Item key='7'>Option 7</Menu.Item>
           <Menu.Item key='8'>Option 8</Menu.Item>
         </SubMenu>
-        <SubMenu key='sub2' icon={<AppstoreOutlined />} title='Navigation Two'>
+        <SubMenu key='sub2' icon={<AppstoreOutlined />} title='Navigation'>
           <Menu.Item key='9'>Option 9</Menu.Item>
           <Menu.Item key='10'>Option 10</Menu.Item>
           <SubMenu key='sub3' title='Submenu'>

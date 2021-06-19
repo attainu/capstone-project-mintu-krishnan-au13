@@ -1,13 +1,19 @@
 import React from 'react';
-import UserNav from '../../components/nav/UserNav';
 
+import User from '../../components/UI/User';
+import UserDash from '../../components/UI/UserDash';
+import UserCard from '../../components/UI/UserCard';
 const Wishlist = () => {
   return (
-    <div className='row'>
-      <UserNav page={3} />
-
-      <div className='col d-flex'>user Wishlist page</div>
-    </div>
+    <User page={3}>
+      <UserDash>
+        <UserCard>
+          <div className='m-5'>
+            <h4 className='text-center blue-text mt-2 pb-4'>WISHLIST</h4>
+          </div>
+        </UserCard>
+      </UserDash>
+    </User>
   );
 };
 

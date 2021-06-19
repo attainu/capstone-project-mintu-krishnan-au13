@@ -44,7 +44,7 @@ const Header = () => {
       mode='horizontal'
       theme='dark'
       style={{ background: '#14181f' }}
-      className='fixed-top'
+      className='fixed-top d-flex'
     >
       <Item key='logo' className='blue-bg-color'>
         <Link to='/'>
@@ -52,6 +52,13 @@ const Header = () => {
             <i className='fab fa-opencart'> Croma</i>
           </Title>
         </Link>
+      </Item>
+      <Item key='shop' className='float-left ' icon={<HomeOutlined />}>
+        <Link to='/shop'>Shop</Link>
+      </Item>
+
+      <Item className='m-auto w-50 p-0 m-0'>
+        <Search />
       </Item>
 
       {/* <Item key='home' icon={<HomeOutlined />}>
@@ -91,7 +98,7 @@ const Header = () => {
             )
           }
           title={user.name}
-          className='float-right'
+          className='ml-auto'
         >
           {user && user.role === 'admin' && (
             <Item key='setting:1'>
@@ -110,7 +117,6 @@ const Header = () => {
           </Item>
         </SubMenu>
       )}
-      <Search />
     </Menu>
   );
 };

@@ -48,8 +48,15 @@
   background-color: #c3ecee !important;
 }
 .grey-bg-color {
-  background-color: gray !important;
+  background-color: grey !important;
 }
+.white-bg-color {
+  background-color: #e6e9ee !important;
+}
+.light-bg-color {
+  background-color: #d4d4d4 !important;
+}
+
 .dark-bg-color {
   background-color: #222831 !important;
 }

@@ -23,15 +23,26 @@ const Search = () => {
   };
 
   return (
-    <form className='d-flex align-items-center' onSubmit={handleSubmit}>
+    <form className='d-flex align-items-center ' onSubmit={handleSubmit}>
       <input
         onChange={handleChange}
         type='search'
         value={text}
         className='form-control mr-sm-2'
-        placeholder='Search'
+        placeholder='What are you looking for?'
       />
-      <SearchOutlined onClick={handleSubmit} style={{ cursor: 'pointer' }} />
+      <SearchOutlined
+        onClick={handleSubmit}
+        style={{
+          cursor: 'pointer',
+          backgroundColor: 'yellow',
+          color: 'black',
+          fontSize: '1rem',
+          padding: '10px',
+          marginLeft: '-10px',
+          border: 'solid 1px',
+        }}
+      />
     </form>
   );
 };
