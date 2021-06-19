@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const userCart = async (cart, authtoken) =>
   await axios.post(
@@ -29,6 +29,17 @@ export const saveUserAddress = async (authtoken, address) =>
   await axios.post(
     `${process.env.REACT_APP_API}/user/address`,
     { address },
+    {
+      headers: {
+        authtoken,
+      },
+    }
+  );
+
+export const applyCoupon = async (authtoken, coupon) =>
+  await axios.post(
+    `${process.env.REACT_APP_API}/user/cart/coupon`,
+    { coupon },
     {
       headers: {
         authtoken,

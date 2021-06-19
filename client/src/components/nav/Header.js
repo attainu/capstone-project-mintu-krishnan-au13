@@ -65,13 +65,13 @@ const Header = () => {
         {cart.length > 0 && (
           <Badge count={cart.length}>
             <Link to='/cart'>
-              <i class='fas fa-shopping-cart cyan-text fa-2x'></i>
+              <i className='fas fa-shopping-cart cyan-text fa-2x'></i>
             </Link>
           </Badge>
         )}
         {!cart.length && (
           <Link to='/cart'>
-            <i class='fas fa-shopping-cart fa-2x'></i>
+            <i className='fas fa-shopping-cart fa-2x'></i>
           </Link>
         )}
       </Item>
@@ -123,7 +123,7 @@ const Header = () => {
           )}
 
           <Item key='setting:2'>
-            <i class='fas fa-cog fa-spin'></i>Settings
+            <i className='fas fa-cog fa-spin'></i>Settings
           </Item>
           <Item key='logout' icon={<LogoutOutlined />} onClick={logout}>
             LogOut

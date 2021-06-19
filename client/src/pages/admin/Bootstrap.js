@@ -579,11 +579,7 @@ const Bootstrap = () => {
                   <div className='row mt-3 mb-4'>
                     <div className='col-md-12 text-center text-md-left text-md-right'>
                       <button className='btn btn-danger btn-rounded'>
-                        {/* <i class="far fa-heart"></i> */}
-                        <i
-                          className='fas fa-heart mr-2'
-                          aria-hidden='true'
-                        ></i>{' '}
+                        <i className='fas fa-heart mr-2' aria-hidden='true'></i>{' '}
                         Add to Wishlist
                       </button>
                       <button className='btn btn-primary btn-rounded'>
