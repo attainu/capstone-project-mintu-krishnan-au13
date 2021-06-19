@@ -1,5 +1,5 @@
-import React from 'react';
-import { Card, Tabs } from 'antd';
+import React, { useState } from 'react';
+import { Card, Tabs, Tooltip } from 'antd';
 import { Link } from 'react-router-dom';
 
 import { Carousel } from 'react-responsive-carousel';
@@ -8,12 +8,49 @@ import Laptop from '../../images/laptop.png';
 import ProductListItems from './ProductListItems';
 import StarRatings from 'react-star-ratings';
 import RatingModal from '../modal/RatingModal';
-import { showAverage } from '../../functions/rating';
+import _ from 'lodash';
+import { useDispatch } from 'react-redux';
 
 const { TabPane } = Tabs;
 
 const SingleProduct = ({ product, onStarClick, star }) => {
+  const [tooltip, setTooltip] = useState('Click to add');
   const { title, images, description, _id } = product;
+
+  const dispatch = useDispatch();
+  const handleAddToCart = () => {
+    // create cart array
+    let cart = [];
+    if (typeof window !== 'undefined') {
+      // if cart is in local storage GET it
+      if (localStorage.getItem('cart')) {
+        cart = JSON.parse(localStorage.getItem('cart'));
+      }
+      // push new product to cart
+      cart.push({
+        ...product,
+        count: 1,
+      });
+      // remove duplicates
+      let unique = _.uniqWith(cart, _.isEqual);
+      // save to local storage
+      // console.log('unique', unique)
+      localStorage.setItem('cart', JSON.stringify(unique));
+      // show tooltip
+      setTooltip('Added');
+
+      // add to reeux state
+      dispatch({
+        type: 'ADD_TO_CART',
+        payload: unique,
+      });
+      // show cart items in side drawer
+      dispatch({
+        type: 'SET_VISIBLE',
+        payload: true,
+      });
+    }
+  };
 
   return (
     <>
@@ -89,9 +126,13 @@ const SingleProduct = ({ product, onStarClick, star }) => {
                   <p className='grey-text'>Wishlist</p>
                 </div>
                 <div className=''>
-                  <button className='btn btn-outline-primary btn-rounded'>
-                    <i className='fas fa-cart-plus' aria-hidden='true'></i>
-                  </button>
+                  <Tooltip title={tooltip}>
+                    <a className='bold ' onClick={handleAddToCart}>
+                      <button className='btn btn-outline-primary btn-rounded'>
+                        <i className='fas fa-cart-plus' aria-hidden='true'></i>
+                      </button>
+                    </a>
+                  </Tooltip>
                   <p className='grey-text'>Add to Cart</p>
                 </div>
               </div>

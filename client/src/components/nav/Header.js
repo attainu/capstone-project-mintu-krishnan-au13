@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, Typography, Avatar } from 'antd';
+import { Menu, Typography, Avatar, Badge } from 'antd';
 import {
   UserOutlined,
   SettingOutlined,
@@ -19,7 +19,7 @@ const { SubMenu, Item } = Menu;
 const Header = () => {
   const [current, setCurrent] = useState('home');
   let dispatch = useDispatch();
-  const { user } = useSelector((state) => ({ ...state }));
+  const { user, cart } = useSelector((state) => ({ ...state }));
 
   let history = useHistory();
 
@@ -31,7 +31,7 @@ const Header = () => {
     firebase.auth().signOut();
     sessionStorage.removeItem('role');
     dispatch({
-      type: 'LOGGED_OUT',
+      type: 'LOGOUT',
       payload: null,
     });
     history.push('/login');
@@ -57,13 +57,24 @@ const Header = () => {
         <Link to='/shop'>Shop</Link>
       </Item>
 
-      <Item className='m-auto w-50 p-0 m-0'>
+      <Item key='search' className='m-auto w-50 p-0 m-0'>
         <Search />
       </Item>
 
-      {/* <Item key='home' icon={<HomeOutlined />}>
-        <Link to='/'>Home</Link>
-      </Item> */}
+      <Item key='home' className='ml-auto pt-2'>
+        {cart.length > 0 && (
+          <Badge count={cart.length}>
+            <Link to='/cart'>
+              <i class='fas fa-shopping-cart cyan-text fa-2x'></i>
+            </Link>
+          </Badge>
+        )}
+        {!cart.length && (
+          <Link to='/cart'>
+            <i class='fas fa-shopping-cart fa-2x'></i>
+          </Link>
+        )}
+      </Item>
 
       {!user && (
         <Item key='register' icon={<UserAddOutlined />} className='float-right'>
@@ -86,7 +97,7 @@ const Header = () => {
                 src={user.picture}
                 className='rounded-circle z-depth-0'
                 alt='avatar image'
-                height='35'
+                height='40'
               />
             ) : (
               <img
@@ -111,7 +122,9 @@ const Header = () => {
             </Item>
           )}
 
-          <Item key='setting:2'>Settings</Item>
+          <Item key='setting:2'>
+            <i class='fas fa-cog fa-spin'></i>Settings
+          </Item>
           <Item key='logout' icon={<LogoutOutlined />} onClick={logout}>
             LogOut
           </Item>
