@@ -334,7 +334,7 @@ const Shop = () => {
               <div>
                 <Slider
                   className='ml-4 mr-4'
-                  tipFormatter={(v) => `$${v}`}
+                  tipFormatter={(v) => `₹ ${v}`}
                   range
                   value={price}
                   onChange={handleSlider}

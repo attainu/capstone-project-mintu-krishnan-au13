@@ -8,23 +8,15 @@ exports.authCheck = async (req, res, next) => {
       .verifyIdToken(req.headers.authtoken);
 
     req.user = firebaseUser;
+    next();
   } catch (error) {
     res.status(401).json({
       error: 'Invalid or Expired Token',
     });
   }
-
-  next();
 };
 
 exports.adminCheck = async (req, res, next) => {
-  if (req.user.email === undefined) {
-    res.status(403).json({
-      err: 'Admin resource. Access denied. Login Again',
-    });
-    return;
-  }
-
   const { email } = req.user;
 
   const adminUser = await User.findOne({ email }).exec();

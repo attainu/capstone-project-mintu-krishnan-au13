@@ -20,7 +20,7 @@ const AdminProductCard = ({ product, handleRemove }) => {
     //     />
     //   }
     //   actions={[
-    //     <Link to={`/admin/product/${slug}`}>
+    //     <Link to={`/admin/product/₹ {slug}`}>
     //       <EditOutlined className="text-warning" />
     //     </Link>,
     //     <DeleteOutlined
@@ -58,11 +58,11 @@ const AdminProductCard = ({ product, handleRemove }) => {
         <h4 className='card-title white-color'>{title}</h4>
 
         {/* <p className='card-text light-color'>
-          {`${description && description.substring(0, 40)}...`}
+          {`₹ {description && description.substring(0, 40)}...`}
         </p> */}
         <div>
           <Link
-            to={`/admin/product/${slug}`}
+            to={`/admin/product/₹ {slug}`}
             type='button'
             className='btn-floating btn-small btn-tw'
           >
