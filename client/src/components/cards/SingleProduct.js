@@ -9,13 +9,19 @@ import ProductListItems from './ProductListItems';
 import StarRatings from 'react-star-ratings';
 import RatingModal from '../modal/RatingModal';
 import _ from 'lodash';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { addToWishlist } from '../../functions/user';
+import { toast } from 'react-toastify';
+import { useHistory } from 'react-router-dom';
 
 const { TabPane } = Tabs;
 
 const SingleProduct = ({ product, onStarClick, star }) => {
   const [tooltip, setTooltip] = useState('Click to add');
   const { title, images, description, _id } = product;
+
+  const { user } = useSelector((state) => ({ ...state }));
+  let history = useHistory();
 
   const dispatch = useDispatch();
   const handleAddToCart = () => {
@@ -50,6 +56,13 @@ const SingleProduct = ({ product, onStarClick, star }) => {
         payload: true,
       });
     }
+  };
+  const handleAddToWishlist = (e) => {
+    e.preventDefault();
+    addToWishlist(product._id, user.token).then((res) => {
+      toast.info('Added to wishlist');
+      history.push('/user/wishlist');
+    });
   };
 
   return (
@@ -120,9 +133,11 @@ const SingleProduct = ({ product, onStarClick, star }) => {
                   <p className='grey-text'>Rate</p>
                 </div>
                 <div className=''>
-                  <button className='btn btn-outline-danger btn-rounded'>
-                    <i className='fas fa-heart ' aria-hidden='true'></i>
-                  </button>
+                  <a onClick={handleAddToWishlist}>
+                    <button className='btn btn-outline-danger btn-rounded'>
+                      <i className='fas fa-heart ' aria-hidden='true'></i>
+                    </button>
+                  </a>
                   <p className='grey-text'>Wishlist</p>
                 </div>
                 <div className=''>
