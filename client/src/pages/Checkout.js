@@ -6,6 +6,7 @@ import {
   emptyUserCart,
   saveUserAddress,
   applyCoupon,
+  createCashOrderForUser,
 } from '../functions/user';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -21,7 +22,8 @@ const Checkout = ({ history }) => {
   const [discountError, setDiscountError] = useState('');
 
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => ({ ...state }));
+  const { user, COD } = useSelector((state) => ({ ...state }));
+  const couponTrueOrFalse = useSelector((state) => state.coupon);
 
   useEffect(() => {
     getUserCart(user.token).then((res) => {
@@ -121,6 +123,31 @@ const Checkout = ({ history }) => {
     </>
   );
 
+  const createCashOrder = () => {
+    createCashOrderForUser(user.token, COD, couponTrueOrFalse).then((res) => {
+      if (res.data.ok) {
+        if (typeof window !== 'undefined') localStorage.removeItem('cart');
+        dispatch({
+          type: 'ADD_TO_CART',
+          payload: [],
+        });
+        dispatch({
+          type: 'COUPON_APPLIED',
+          payload: false,
+        });
+        dispatch({
+          type: 'COD',
+          payload: false,
+        });
+        emptyUserCart(user.token);
+        toast.success('Order Placed Successfully');
+        setTimeout(() => {
+          history.push('/user/history');
+        }, 600);
+      }
+    });
+  };
+
   return (
     <div className='container pt-5'>
       <div className='row mt-5'>
@@ -154,13 +181,23 @@ const Checkout = ({ history }) => {
 
           <div className='row'>
             <div className='col-md-6'>
-              <button
-                className='btn btn-primary'
-                disabled={!addressSaved || !products.length}
-                onClick={() => history.push('/payment')}
-              >
-                Place Order
-              </button>
+              {COD ? (
+                <button
+                  className='btn btn-primary'
+                  disabled={!addressSaved || !products.length}
+                  onClick={createCashOrder}
+                >
+                  Place Order ( COD )
+                </button>
+              ) : (
+                <button
+                  className='btn btn-primary'
+                  disabled={!addressSaved || !products.length}
+                  onClick={() => history.push('/payment')}
+                >
+                  Place Order
+                </button>
+              )}
             </div>
 
             <div className='col-md-6'>

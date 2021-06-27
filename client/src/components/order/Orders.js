@@ -49,6 +49,7 @@ const Orders = ({ orders, handleStatusChange }) => {
             <div className='row'>
               <div className='col-md-4'>Delivery Status</div>
               <div className='col-md-8'>
+                {/* {JSON.stringify(order.paymentIntent.payment_method_types[0])} */}
                 <select
                   onChange={(e) =>
                     handleStatusChange(order._id, e.target.value)
@@ -57,11 +58,33 @@ const Orders = ({ orders, handleStatusChange }) => {
                   defaultValue={order.orderStatus}
                   name='status'
                 >
-                  <option value='Not Processed'>Not Processed</option>
-                  <option value='Processing'>Processing</option>
-                  <option value='Dispatched'>Dispatched</option>
-                  <option value='Cancelled'>Cancelled</option>
-                  <option value='Completed'>Completed</option>
+                  {/* {order.paymentIntent.payment_method_types[0] == 'CARD' && (
+                    <>
+                      <option value='Not Processed'>Not Processed</option>
+                      <option value='Processing'>Processing</option>
+                      <option value='Dispatched'>Dispatched</option>
+                      <option value='Cancelled'>Cancelled</option>
+                      <option value='Completed'>Delivered</option>
+                    </>
+                  )}
+                  {order.paymentIntent.payment_method_types[0] == 'CASH' && (
+                    <>
+                      <option value='Not Processed'>Not Processed</option>
+                      <option value='Processing'>Processing</option>
+                      <option value='Dispatched'>Dispatched</option>
+                      <option value='Cancelled'>Cancelled</option>
+                      <option value='Completed'>
+                        Amount Received & Delivered
+                      </option>
+                    </>
+                  )} */}
+                  <>
+                    <option value='Not Processed'>Not Processed</option>
+                    <option value='Processing'>Processing</option>
+                    <option value='Dispatched'>Dispatched</option>
+                    <option value='Cancelled'>Cancelled</option>
+                    <option value='Completed'>Delivered</option>
+                  </>
                 </select>
               </div>
             </div>

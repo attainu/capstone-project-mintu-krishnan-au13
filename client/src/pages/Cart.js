@@ -15,6 +15,27 @@ const Cart = ({ history }) => {
   };
 
   const saveOrderToDb = () => {
+    dispatch({
+      type: 'COD',
+      payload: false,
+    });
+    userCart(cart, user.token)
+      .then((res) => {
+        if (res.data.ok) history.push('/checkout');
+      })
+      .catch((err) => console.log('cart save err', err));
+  };
+
+  const saveCashOrderToDb = () => {
+    dispatch({
+      type: 'COD',
+      payload: true,
+    });
+    dispatch({
+      type: 'COUPON_APPLIED',
+      payload: false,
+    });
+
     userCart(cart, user.token)
       .then((res) => {
         if (res.data.ok) history.push('/checkout');
@@ -72,13 +93,23 @@ const Cart = ({ history }) => {
           Total: <b>₹ {getTotal()}</b>
           <hr />
           {user ? (
-            <button
-              onClick={saveOrderToDb}
-              className='btn btn-sm btn-primary mt-2'
-              disabled={!cart.length}
-            >
-              Proceed to Checkout
-            </button>
+            <>
+              <button
+                onClick={saveOrderToDb}
+                className='btn btn-sm btn-primary mt-2'
+                disabled={!cart.length}
+              >
+                Proceed to Checkout
+              </button>
+              <br />
+              <button
+                onClick={saveCashOrderToDb}
+                className='btn btn-sm btn-secondary mt-2'
+                disabled={!cart.length}
+              >
+                Pay Cash on Delivery
+              </button>
+            </>
           ) : (
             <button className='btn btn-sm btn-primary mt-2'>
               <Link
