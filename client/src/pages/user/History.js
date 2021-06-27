@@ -6,6 +6,9 @@ import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import ShowPaymentInfo from '../../components/cards/ShowPaymentInfo';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import Invoice from '../../components/order/Invoice';
+import User from '../../components/UI/User';
+import UserDash from '../../components/UI/UserDash';
+import UserCard from '../../components/UI/UserCard';
 
 const History = () => {
   const [orders, setOrders] = useState([]);
@@ -78,19 +81,18 @@ const History = () => {
     ));
 
   return (
-    <div className='container-fluid'>
-      <div className='row'>
-        <div className='col-md-2'>
-          <UserNav />
-        </div>
-        <div className='col text-center'>
-          <h4>
-            {orders.length > 0 ? 'User purchase orders' : 'No purchase orders'}
-          </h4>
-          {showEachOrders()}
-        </div>
-      </div>
-    </div>
+    <User page={1}>
+      <UserDash>
+        <UserCard>
+          <div className='col text-center'>
+            <h4 className='text-center blue-text mt-5 pb-4'>
+              {orders.length > 0 ? 'PURCHASE ORDERS' : 'N0 ORDERS'}
+            </h4>
+            {showEachOrders()}
+          </div>
+        </UserCard>
+      </UserDash>
+    </User>
   );
 };
 

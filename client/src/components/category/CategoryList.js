@@ -17,7 +17,7 @@ const CategoryList = () => {
   const showCategories = () => {
     return categories.map((c) => (
       <div key={c._id} className='mx-3 my-2'>
-        <Link to={`/category/${c.slug}`} className='badge badge-default p-2'>
+        <Link to={`/category/${c.slug}`} className='badge badge-default p-3'>
           {c.name}
         </Link>
       </div>
@@ -25,13 +25,24 @@ const CategoryList = () => {
   };
 
   return (
-    <div className='container-fluid row mt-5'>
-      <div className='col col-md-2'>
-        <h3>Categories</h3>
-      </div>
-      <div className='col'>
-        <div className='card mx-3 px-3'>
-          <div className='row'>
+    <div className='container-fluid '>
+      <h2 className=' font-weight-bold dark-grey-text text-center my-5'>
+        Categories
+      </h2>
+      <div className='row mx-5'>
+        <div class='col-md-4 mb-4'>
+          <div className=''>
+            <div class='view'>
+              <img
+                src='https://mdbootstrap.com/img/illustrations/drawkit-drawing-man-colour.svg'
+                class='img-fluid w-100'
+                alt='sample image'
+              />
+            </div>
+          </div>
+        </div>
+        <div className=' col-md-8 d-flex align-items-center flex-column mb-4 justify-content-center '>
+          <div className='row '>
             {loading ? (
               <h4 className='text-center'>Loading...</h4>
             ) : (

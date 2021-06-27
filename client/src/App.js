@@ -5,9 +5,9 @@ import { toast } from 'react-toastify';
 import { auth } from './firebase';
 import { useDispatch } from 'react-redux';
 import { currentUser } from '../src/functions/auth';
-import { LoadingOutlined } from '@ant-design/icons';
 import 'react-toastify/dist/ReactToastify.css';
 
+const PageNotFound = lazy(() => import('./pages/PageNotFound'));
 const SideDrawer = lazy(() => import('./components/drawer/SideDrawer'));
 const Login = lazy(() => import('./pages/auth/Login'));
 const Register = lazy(() => import('./pages/auth/Register'));
@@ -30,7 +30,6 @@ const CategoryUpdate = lazy(() =>
 const SubCreate = lazy(() => import('./pages/admin/sub/SubCreate'));
 const SubUpdate = lazy(() => import('./pages/admin/sub/SubUpdate'));
 const ProductCreate = lazy(() => import('./pages/admin/product/ProductCreate'));
-const Bootstrap = lazy(() => import('./pages/admin/Bootstrap'));
 const AllProducts = lazy(() => import('./pages/admin/product/AllProducts'));
 const ProductUpdate = lazy(() => import('./pages/admin/product/ProductUpdate'));
 const Product = lazy(() => import('./pages/Product'));
@@ -128,7 +127,7 @@ function App() {
         />
         <AdminRoute exact path='/admin/coupon' component={CreateCouponPage} />
 
-        <AdminRoute path='*' component={Bootstrap} />
+        <Route path='*' component={PageNotFound} />
       </Switch>
     </Suspense>
   );

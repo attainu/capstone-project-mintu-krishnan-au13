@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import Orders from '../../components/order/Orders';
 import Admin from '../../components/UI/Admin';
-import AdminDash from '../../components/UI/AdminDash';
+import WiderAdminDash from '../../components/UI/WiderAdminDash';
 import Card from '../../components/UI/Card';
 
 const AdminDashboard = () => {
@@ -30,12 +30,12 @@ const AdminDashboard = () => {
 
   return (
     <Admin page={1}>
-      <AdminDash>
-        <div className='col-md-10 offset-md-1'>
-          <h4>Admin Dashboard</h4>
-          <Orders orders={orders} handleStatusChange={handleStatusChange} />
-        </div>
-      </AdminDash>
+      <WiderAdminDash>
+        <Card>
+          <h4 className='text-center blue-text my-4'>ADMIN DASHBOARD</h4>
+        </Card>
+        <Orders orders={orders} handleStatusChange={handleStatusChange} />
+      </WiderAdminDash>
     </Admin>
   );
 };

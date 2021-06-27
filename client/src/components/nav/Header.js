@@ -131,7 +131,7 @@ const Header = () => {
           )}
 
           <Item key='setting:2'>
-            <i className='fas fa-cog fa-spin'></i>Settings
+            <i className='fas fa-cog fa-spin'></i> Settings
           </Item>
           <Item key='logout' icon={<LogoutOutlined />} onClick={logout}>
             LogOut

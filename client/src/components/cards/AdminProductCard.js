@@ -62,7 +62,7 @@ const AdminProductCard = ({ product, handleRemove }) => {
         </p> */}
         <div>
           <Link
-            to={`/admin/product/₹ {slug}`}
+            to={`/admin/product/${slug}`}
             type='button'
             className='btn-floating btn-small btn-tw'
           >
