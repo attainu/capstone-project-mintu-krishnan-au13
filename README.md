@@ -55,7 +55,9 @@ The objective of this project is to develop a general purpose ecommerce store wh
 
 ## DEPLOYED LINK
 
-## FLOW CHART
+    https://cromax.netlify.app/
+
+## FLOW CHARTC
 
 ![Flow Chart](https://github.com/attainu/capstone-project-mintu-krishnan-au13/blob/dev/documents/Flowchart.jpg)
 
