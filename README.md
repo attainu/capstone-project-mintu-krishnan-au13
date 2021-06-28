@@ -53,6 +53,8 @@ The objective of this project is to develop a general purpose ecommerce store wh
     • Sort products by Rating, Price, Date Added.
     • Payment with Stripe
 
+## DEPLOYED LINK
+
 ## FLOW CHART
 
 ![Flow Chart](https://github.com/attainu/capstone-project-mintu-krishnan-au13/blob/dev/documents/Flowchart.jpg)
