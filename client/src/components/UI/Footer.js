@@ -40,7 +40,7 @@ const Footer = () => {
       <div className='container text-center text-md-left mt-5'>
         <div className='row mt-3 dark-grey-text'>
           <div className='col-md-3 col-lg-4 col-xl-3 mb-4'>
-            <h6 className='text-uppercase font-weight-bold'>Croma X</h6>
+            <h6 className='text-uppercase font-weight-bold'>CromaX</h6>
             <hr
               className='teal accent-3 mb-4 mt-0 d-inline-block mx-auto'
               style={{ width: '60px' }}
@@ -115,13 +115,13 @@ const Footer = () => {
               style={{ width: '60px' }}
             />
             <p>
-              <i className='fas fa-home mr-3'></i> New York, NY 10012, US
+              <i className='fas fa-home mr-3'></i> Mumbai, MN 400104, India
             </p>
             <p>
               <i className='fas fa-envelope mr-3'></i> info@example.com
             </p>
             <p>
-              <i className='fas fa-phone mr-3'></i> + 01 234 567 88
+              <i className='fas fa-phone mr-3'></i> + 919867292190
             </p>
             <p>
               <i className='fas fa-print mr-3'></i> + 01 234 567 89
@@ -131,7 +131,7 @@ const Footer = () => {
       </div>
 
       <div className='footer-copyright text-center text-black-50 py-3'>
-        © 2021 Copyright:
+        © 2021 Copyright: by ⭐ Mintu & Dimple ⭐
         <a className='dark-grey-text' href='https://cromax.netlify.app/'>
           {' '}
           cromax.com

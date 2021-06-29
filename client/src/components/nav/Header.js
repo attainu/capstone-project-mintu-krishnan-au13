@@ -49,7 +49,7 @@ const Header = () => {
       <Item key='logo' className='blue-bg-color'>
         <Link to='/'>
           <Title level={3} className='my-2  '>
-            <i className='fab fa-opencart'> Croma</i>
+            <i className='fab fa-opencart'> CromaX</i>
           </Title>
         </Link>
       </Item>
